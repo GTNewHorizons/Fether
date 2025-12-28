@@ -1,0 +1,6 @@
+dependencies {
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
+	
+	compileOnly("curse.maven:minefactory-reloaded-66672:2277487")
+	compileOnly("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev") {transitive = false }
+}
