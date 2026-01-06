@@ -3,6 +3,7 @@ package glowredman.nood;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.ClientCommandHandler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,6 +36,10 @@ public class Nood {
         NoodConfig.init(event.getModConfigurationDirectory());
         NoodBlocks.init();
         NoodItems.init();
+        if (event.getSide()
+            .isClient()) {
+            ClientCommandHandler.instance.registerCommand(new CommandNoodAI());
+        }
     }
 
     @EventHandler
