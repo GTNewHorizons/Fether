@@ -9,6 +9,9 @@ import glowredman.nood.NoodItems;
 
 public class ItemQuartzArmor extends ItemArmor {
 
+    /**
+     * @param armorType 0 = helmet, 1 = chestplate, 2 = leggings, 3 = boots
+     */
     public ItemQuartzArmor(int armorType) {
         super(NoodItems.ARMOR_MATERIAL_QUARTZ, 0, armorType);
     }

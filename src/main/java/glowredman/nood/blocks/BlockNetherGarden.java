@@ -12,8 +12,7 @@ import glowredman.nood.NoodItems;
 public class BlockNetherGarden extends BlockNetherFlower {
 
     public BlockNetherGarden() {
-        this.spread = NoodConfig.gardenSpread;
-        this.spreadRate = NoodConfig.gardenSpreadRate;
+        super(NoodConfig.gardenSpreadRate);
     }
 
     @Override

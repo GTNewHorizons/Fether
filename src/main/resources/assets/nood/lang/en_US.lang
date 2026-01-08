@@ -173,7 +173,8 @@ commands.nood.noodai.response.text.127=Do NOT hold down F3 + C for more than six
 commands.nood.noodai.response.text.128=Beep boop, I'm a robot!
 commands.nood.noodai.response.text.129=Try downloading more RAM.
 commands.nood.noodai.response.text.130=Try downloading more WAM.
-commands.nood.noodai.response.text.num=131
+commands.nood.noodai.response.text.131=Please hold the lion! NoodAI will be available in a few meowments.
+commands.nood.noodai.response.text.num=132
 
 commands.nood.noodai.response.mood.prefix=NoodAI says: My mood is %1$s
 commands.nood.noodai.response.mood.0=;)

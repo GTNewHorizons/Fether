@@ -2,6 +2,9 @@ package glowredman.nood.worldgen;
 
 import java.util.Random;
 
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
@@ -12,14 +15,14 @@ import glowredman.nood.NoodBlocks;
 
 public class WorldGenNetherTree extends WorldGenAbstractTree {
 
-    private final int minTreeHeight;
-    private final IPlantable sapling;
-    private final Block blockLeaves;
-    private final int metaLeaves;
-    private final Block blockFruit;
-    private final int metaFruit;
-    private final Block blockLog;
-    private final int metaLog;
+    protected @Nonnegative int minTreeHeight;
+    protected @Nonnull IPlantable sapling;
+    protected @Nonnull Block blockLeaves;
+    protected @Nonnegative int metaLeaves;
+    protected @Nonnull Block blockFruit;
+    protected @Nonnegative int metaFruit;
+    protected @Nonnull Block blockLog;
+    protected @Nonnegative int metaLog;
 
     public WorldGenNetherTree(boolean doBlockNotify) {
         super(doBlockNotify);

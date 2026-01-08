@@ -3,6 +3,8 @@ package glowredman.nood.blocks;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnegative;
+
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -19,14 +21,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockNetherFlower extends BlockFlower {
 
-    protected boolean spread;
-    protected int spreadRate;
+    private final int spreadRate;
 
-    protected BlockNetherFlower() {
+    protected BlockNetherFlower(@Nonnegative int spreadRate) {
         super(0);
         this.setBlockBounds(0.3f, 0.0f, 0.3f, 0.7f, 0.6f, 0.7f);
         this.setStepSound(soundTypeGrass);
         this.setTickRandomly(true);
+        this.spreadRate = spreadRate;
     }
 
     @Override
@@ -60,7 +62,7 @@ public class BlockNetherFlower extends BlockFlower {
         // drop as item if placement is no longer valid
         super.updateTick(worldIn, x, y, z, random);
 
-        if (!this.spread || random.nextInt(this.spreadRate) != 0) {
+        if (this.spreadRate < 1 || random.nextInt(this.spreadRate) != 0) {
             return;
         }
 

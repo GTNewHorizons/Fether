@@ -2,6 +2,8 @@ package glowredman.nood.blocks;
 
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +18,7 @@ public class BlockNetherCrops extends BlockCrops {
     private final Item drop;
     private final Item seed;
 
-    public BlockNetherCrops(Item drop, Item seed) {
+    public BlockNetherCrops(@Nonnull Item drop, @Nonnull Item seed) {
         this.drop = drop;
         this.seed = seed;
     }

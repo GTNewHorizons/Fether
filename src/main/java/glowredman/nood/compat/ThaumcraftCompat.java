@@ -1,5 +1,8 @@
 package glowredman.nood.compat;
 
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
@@ -20,7 +23,7 @@ public class ThaumcraftCompat {
         addAspects();
     }
 
-    private static void addStandardCrops(Block crop, int finalStage) {
+    private static void addStandardCrops(@Nonnull Block crop, @Nonnegative int finalStage) {
         FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(crop, 1, finalStage));
     }
 

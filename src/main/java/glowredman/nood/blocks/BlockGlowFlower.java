@@ -13,8 +13,7 @@ import glowredman.nood.NoodItems;
 public class BlockGlowFlower extends BlockNetherFlower {
 
     public BlockGlowFlower() {
-        this.spread = NoodConfig.glowFlowerSpread;
-        this.spreadRate = NoodConfig.glowFlowerSpreadRate;
+        super(NoodConfig.glowFlowerSpreadRate);
     }
 
     @Override
