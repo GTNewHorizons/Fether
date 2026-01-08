@@ -29,4 +29,9 @@ public class BlockNetherGarden extends BlockNetherFlower {
             default -> NoodConfig.gardensDropSeeds ? NoodItems.itemMarrowBerrySeeds : NoodItems.itemMarrowBerry;
         };
     }
+
+    @Override
+    public int quantityDropped(Random random) {
+        return NoodConfig.gardenDropAmount;
+    }
 }

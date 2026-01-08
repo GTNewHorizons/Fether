@@ -53,7 +53,7 @@ public class Nood {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        // TODO recipe
+        NoodRecipes.init();
         // TODO register world gen
     }
 

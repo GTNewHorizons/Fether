@@ -171,7 +171,9 @@ commands.nood.noodai.response.text.125=§oConnection lost.
 commands.nood.noodai.response.text.126=§oYour prompt has been queued at position 905678.
 commands.nood.noodai.response.text.127=Do NOT hold down F3 + C for more than six seconds!
 commands.nood.noodai.response.text.128=Beep boop, I'm a robot!
-commands.nood.noodai.response.text.num=128
+commands.nood.noodai.response.text.129=Try downloading more RAM.
+commands.nood.noodai.response.text.130=Try downloading more WAM.
+commands.nood.noodai.response.text.num=131
 
 commands.nood.noodai.response.mood.prefix=NoodAI says: My mood is %1$s
 commands.nood.noodai.response.mood.0=;)
