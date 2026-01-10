@@ -3,6 +3,8 @@ package glowredman.nood;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.commons.io.FileUtils;
@@ -86,26 +88,11 @@ public class NoodConfig {
         cfg.renameProperty(CATEGORY_GARDENS, "glowflowersdropSeeds", "glowFlowersDropSeeds");
         cfg.renameProperty(CATEGORY_RECIPES, "enablecroptoseedRecipe", "enableCrop2SeedRecipes");
 
-        if (cfg.getBoolean("nethertreeGeneration", CATEGORY_TREES, false, "")) {
-            cfg.get(CATEGORY_TREES, "treeRarity", treeRarity)
-                .set(0);
-        }
-        if (cfg.getBoolean("enablegardenSpread", CATEGORY_GARDENS, false, "")) {
-            cfg.get(CATEGORY_GARDENS, "gardenSpreadRate", gardenSpreadRate)
-                .set(0);
-        }
-        if (cfg.getBoolean("enablenethergardenGeneration", CATEGORY_GARDENS, false, "")) {
-            cfg.get(CATEGORY_GARDENS, "gardenRarity", gardenRarity)
-                .set(0);
-        }
-        if (cfg.getBoolean("enableglowflowerSpread", CATEGORY_GARDENS, false, "")) {
-            cfg.get(CATEGORY_GARDENS, "glowFlowerSpreadRate", glowFlowerSpreadRate)
-                .set(0);
-        }
-        if (cfg.getBoolean("enablenetherglowflowerGeneration", CATEGORY_GARDENS, false, "")) {
-            cfg.get(CATEGORY_GARDENS, "glowFlowerRarity", glowFlowerRarity)
-                .set(0);
-        }
+        convert(cfg, CATEGORY_TREES, "nethertreeGeneration", "treeRarity", treeRarity);
+        convert(cfg, CATEGORY_GARDENS, "enablegardenSpread", "gardenSpreadRate", gardenSpreadRate);
+        convert(cfg, CATEGORY_GARDENS, "enablenethergardenGeneration", "gardenRarity", gardenRarity);
+        convert(cfg, CATEGORY_GARDENS, "enableglowflowerSpread", "glowFlowerSpreadRate", glowFlowerSpreadRate);
+        convert(cfg, CATEGORY_GARDENS, "enablenetherglowflowerGeneration", "glowFlowerRarity", glowFlowerRarity);
 
         // spotless:off
         enableNoodAI = cfg.getBoolean("enableNoodAI", Configuration.CATEGORY_GENERAL, enableNoodAI, "(CLIENT ONLY) If the \"/noodai\" command should be enabled");
@@ -136,6 +123,18 @@ public class NoodConfig {
 
         if (cfg.hasChanged()) {
             cfg.save();
+        }
+    }
+
+    private static void convert(@Nonnull Configuration cfg, String category, String propertyBoolean, String propertyInt,
+        int defaultInt) {
+        if (cfg.hasKey(category, propertyBoolean)) {
+            if (cfg.getBoolean(propertyBoolean, category, false, null)) {
+                cfg.get(category, propertyInt, defaultInt)
+                    .set(0);
+            }
+            cfg.getCategory(category)
+                .remove(propertyBoolean);
         }
     }
 }
