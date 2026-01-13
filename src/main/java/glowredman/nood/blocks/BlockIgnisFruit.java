@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import glowredman.nood.NoodBlocks;
 import glowredman.nood.NoodConfig;
 import glowredman.nood.NoodItems;
 
@@ -63,7 +64,7 @@ public class BlockIgnisFruit extends Block implements IGrowable {
     @Override
     public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX,
         float subY, float subZ) {
-        if (worldIn.getBlockMetadata(x, y, z) == 2) {
+        if (worldIn.getBlockMetadata(x, y, z) >= 2) {
             if (worldIn.isRemote) {
                 if (NoodConfig.rClickMatureFruitsShowHearts) {
                     worldIn.spawnParticle("heart", x + subX, y + subY, z + subZ, 0.0, 0.0, 0.0);
@@ -84,6 +85,17 @@ public class BlockIgnisFruit extends Block implements IGrowable {
             this.dropBlockAsItem(worldIn, x, y, z, 2, 0);
             worldIn.setBlock(x, y, z, this, 0, 2);
         }
+    }
+
+    @Override
+    public void onNeighborBlockChange(World worldIn, int x, int y, int z, Block neighbor) {
+        if (worldIn.getBlock(x, y + 1, z) == NoodBlocks.blockNetherLeaves) {
+            return;
+        }
+        if (worldIn.getBlockMetadata(x, y, z) >= 2) {
+            this.dropBlockAsItem(worldIn, x, y, z, 2, 0);
+        }
+        worldIn.setBlockToAir(x, y, z);
     }
 
     @Override

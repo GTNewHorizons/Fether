@@ -9,18 +9,39 @@ import net.minecraft.block.BlockCrops;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 
+import glowredman.nood.Nood;
 import glowredman.nood.NoodConfig;
 
 public class BlockNetherCrops extends BlockCrops {
 
-    private final Item drop;
-    private final Item seed;
+    private Item drop;
+    private Item seed;
+    private final ThreadLocal<Boolean> rClickHarvest = ThreadLocal.withInitial(() -> Boolean.FALSE);
 
-    public BlockNetherCrops(@Nonnull Item drop, @Nonnull Item seed) {
-        this.drop = drop;
-        this.seed = seed;
+    public BlockNetherCrops setItems(@Nonnull Item drop, @Nonnull Item seed) {
+        if (this.drop == null) {
+            this.drop = drop;
+        } else {
+            Nood.LOGGER.warn(
+                "Can not assign {} as drop to {} as {} is already assigned to it.",
+                drop.delegate.name(),
+                this.delegate.name(),
+                this.drop.delegate.name());
+        }
+        if (this.seed == null) {
+            this.seed = seed;
+        } else {
+            Nood.LOGGER.warn(
+                "Can not assign {} as seed to {} as {} is already assigned to it.",
+                seed.delegate.name(),
+                this.delegate.name(),
+                this.seed.delegate.name());
+        }
+        return this;
     }
 
     @Override
@@ -33,7 +54,9 @@ public class BlockNetherCrops extends BlockCrops {
                 }
             } else {
                 if (NoodConfig.rClickHarvestCrops) {
+                    this.rClickHarvest.set(Boolean.TRUE);
                     this.dropBlockAsItem(worldIn, x, y, z, 2, 0);
+                    this.rClickHarvest.set(Boolean.FALSE);
                     worldIn.setBlock(x, y, z, this, 0, 2);
                 }
             }
@@ -44,6 +67,11 @@ public class BlockNetherCrops extends BlockCrops {
     @Override
     protected boolean canPlaceBlockOn(Block ground) {
         return ground == Blocks.soul_sand;
+    }
+
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
+        return EnumPlantType.Nether;
     }
 
     /**
@@ -64,6 +92,6 @@ public class BlockNetherCrops extends BlockCrops {
 
     @Override
     public int quantityDropped(Random random) {
-        return NoodConfig.rClickHarvestCrops ? 0 : 1;
+        return this.rClickHarvest.get() ? 0 : 1;
     }
 }

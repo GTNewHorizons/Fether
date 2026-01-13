@@ -3,7 +3,6 @@ package glowredman.nood;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,10 +25,10 @@ public class NoodBlocks {
     public static Block blockNetherGarden;
     public static Block blockIgnisFruit;
     public static Block blockGlowFlower;
-    public static Block blockBloodLeafCrop;
-    public static Block blockFleshRootCrop;
-    public static Block blockMarrowBerryCrop;
-    public static Block blockGlowFlowerCrop;
+    public static BlockNetherCrops blockBloodLeafCrop;
+    public static BlockNetherCrops blockFleshRootCrop;
+    public static BlockNetherCrops blockMarrowBerryCrop;
+    public static BlockNetherCrops blockGlowFlowerCrop;
 
     static void init() {
         createBlocks();
@@ -63,24 +62,19 @@ public class NoodBlocks {
             .setCreativeTab(Nood.TAB_NOOD)
             .setBlockName(Nood.MODID + ".glow_flower")
             .setBlockTextureName(Nood.MODID + ":glow_flower");
-        blockBloodLeafCrop = new BlockNetherCrops(NoodItems.itemBloodLeaf, NoodItems.itemBloodLeafSeeds)
-            .setCreativeTab(Nood.TAB_NOOD)
+        blockBloodLeafCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Nood.TAB_NOOD)
             .setBlockName(Nood.MODID + ".blood_leaf_crop")
             .setBlockTextureName(Nood.MODID + ":blood_leaf_crop");
-        blockFleshRootCrop = new BlockNetherCrops(NoodItems.itemFleshRoot, NoodItems.itemFleshRootSeeds)
-            .setCreativeTab(Nood.TAB_NOOD)
+        blockFleshRootCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Nood.TAB_NOOD)
             .setBlockName(Nood.MODID + ".flesh_root_crop")
             .setBlockTextureName(Nood.MODID + ":flesh_root_crop");
-        blockMarrowBerryCrop = new BlockNetherCrops(NoodItems.itemMarrowBerry, NoodItems.itemMarrowBerrySeeds)
-            .setCreativeTab(Nood.TAB_NOOD)
+        blockMarrowBerryCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Nood.TAB_NOOD)
             .setBlockName(Nood.MODID + ".marrow_berry_crop")
             .setBlockTextureName(Nood.MODID + ":marrow_berry_crop");
-        blockGlowFlowerCrop = new BlockNetherCrops(
-            Item.getItemFromBlock(blockGlowFlower),
-            NoodItems.itemGlowFlowerSeeds).setLightLevel(1.0f)
-                .setCreativeTab(Nood.TAB_NOOD)
-                .setBlockName(Nood.MODID + ".glow_flower_crop")
-                .setBlockTextureName(Nood.MODID + ":glow_flower_crop");
+        blockGlowFlowerCrop = (BlockNetherCrops) new BlockNetherCrops().setLightLevel(1.0f)
+            .setCreativeTab(Nood.TAB_NOOD)
+            .setBlockName(Nood.MODID + ".glow_flower_crop")
+            .setBlockTextureName(Nood.MODID + ":glow_flower_crop");
     }
 
     private static void registerBlocks() {

@@ -53,6 +53,11 @@ public class NoodItems {
         registerItems();
         addODTags();
 
+        NoodBlocks.blockBloodLeafCrop.setItems(itemBloodLeaf, itemBloodLeafSeeds);
+        NoodBlocks.blockFleshRootCrop.setItems(itemFleshRoot, itemFleshRootSeeds);
+        NoodBlocks.blockMarrowBerryCrop.setItems(itemMarrowBerry, itemMarrowBerrySeeds);
+        NoodBlocks.blockGlowFlowerCrop.setItems(Item.getItemFromBlock(NoodBlocks.blockGlowFlower), itemGlowFlowerSeeds);
+
         if (NoodConfig.isArmorRepairable) {
             ARMOR_MATERIAL_QUARTZ.customCraftingMaterial = itemQuartzIngot;
         }
