@@ -6,12 +6,12 @@ import javax.annotation.Nonnull;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import glowredman.nood.NoodBlocks;
 import glowredman.nood.NoodItems;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.lib.utils.CropUtils;
 
 public class ThaumcraftCompat {
 
@@ -24,7 +24,9 @@ public class ThaumcraftCompat {
     }
 
     private static void addStandardCrops(@Nonnull Block crop, @Nonnegative int finalStage) {
-        FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(crop, 1, finalStage));
+        // can't use IMC here because it uses ItemStacks and crop may not have a corresponding Item (thus causing a
+        // NullPointerException, see issue #1)
+        CropUtils.standardCrops.add(crop.getUnlocalizedName() + finalStage);
     }
 
     private static void addAspects() {
@@ -33,11 +35,6 @@ public class ThaumcraftCompat {
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockNetherLeaves), new AspectList().add(Aspect.PLANT, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockNetherSapling), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockGlowFlower), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockBloodLeafCrop), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockFleshRootCrop), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockMarrowBerryCrop), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.CROP, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockGlowFlowerCrop), new AspectList().add(Aspect.PLANT, 2).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(NoodBlocks.blockIgnisFruit), new AspectList().add(Aspect.CROP, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodItems.itemIgnisFruit), new AspectList().add(Aspect.CROP, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodItems.itemBloodLeaf), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(NoodItems.itemFleshRoot), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));

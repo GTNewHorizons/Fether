@@ -174,7 +174,14 @@ commands.nood.noodai.response.text.128=Beep boop, I'm a robot!
 commands.nood.noodai.response.text.129=Try downloading more RAM.
 commands.nood.noodai.response.text.130=Try downloading more WAM.
 commands.nood.noodai.response.text.131=Please hold the lion! NoodAI will be available in a few meowments.
-commands.nood.noodai.response.text.num=132
+commands.nood.noodai.response.text.132=§ojava.lang.IllegalArgumentException: Bad prompt
+commands.nood.noodai.response.text.133=§ojava.lang.IllegalStateException: NoodAI is currently busy
+commands.nood.noodai.response.text.134=§ojava.lang.OutOfMemoryError: NoodAI failed to allocate the necessary memory for the response
+commands.nood.noodai.response.text.135=This statement is false.
+commands.nood.noodai.response.text.136=Maybe you should take a break.
+commands.nood.noodai.response.text.137=Uhhhh... I forgot.
+commands.nood.noodai.response.text.138=WW91IG11c3QgYmUgYm9yZWQu
+commands.nood.noodai.response.text.num=139
 
 commands.nood.noodai.response.mood.prefix=NoodAI says: My mood is %1$s
 commands.nood.noodai.response.mood.0=;)
