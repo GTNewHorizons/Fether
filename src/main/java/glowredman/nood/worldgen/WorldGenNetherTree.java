@@ -23,6 +23,8 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
     protected @Nonnegative int metaFruit;
     protected @Nonnull Block blockLog;
     protected @Nonnegative int metaLog;
+    protected @Nonnull Block blockLogVariant;
+    protected @Nonnegative int metaLogVariant;
 
     public WorldGenNetherTree(boolean doBlockNotify) {
         super(doBlockNotify);
@@ -34,6 +36,8 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
         this.metaFruit = 0;
         this.blockLog = NoodBlocks.blockNetherLog;
         this.metaLog = 0;
+        this.blockLogVariant = NoodBlocks.blockNetherLog;
+        this.metaLogVariant = 1;
     }
 
     @Override
@@ -119,7 +123,11 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
             int logY = y + offsetY;
             Block block = world.getBlock(x, logY, z);
             if (block.isAir(world, x, logY, z) || block.isLeaves(world, x, logY, z) || block == this.blockFruit) {
-                this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLog, this.metaLog);
+                if (rng.nextInt(8) == 0) {
+                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLogVariant, this.metaLogVariant);
+                } else {
+                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLog, this.metaLog);
+                }
             }
         }
 

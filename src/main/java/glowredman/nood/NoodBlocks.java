@@ -14,6 +14,7 @@ import glowredman.nood.blocks.BlockNetherGarden;
 import glowredman.nood.blocks.BlockNetherLeaves;
 import glowredman.nood.blocks.BlockNetherLog;
 import glowredman.nood.blocks.BlockNetherSapling;
+import glowredman.nood.items.blocks.ItemBlockNetherLog;
 
 public class NoodBlocks {
 
@@ -78,7 +79,7 @@ public class NoodBlocks {
     }
 
     private static void registerBlocks() {
-        GameRegistry.registerBlock(blockNetherLog, "nether_log");
+        GameRegistry.registerBlock(blockNetherLog, ItemBlockNetherLog.class, "nether_log");
         GameRegistry.registerBlock(blockNetherLeaves, "nether_leaves");
         GameRegistry.registerBlock(blockNetherPlanks, "nether_planks");
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
