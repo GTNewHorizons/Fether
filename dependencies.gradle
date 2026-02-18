@@ -1,5 +1,7 @@
 dependencies {
-	runtimeOnlyNonPublishable("curse.maven:cofh-core-69162:2388751")
-	devOnlyNonPublishable("curse.maven:minefactory-reloaded-66672:2277486-sources-2277487")
+	runtimeOnlyNonPublishable('com.github.GTNewHorizons:NotEnoughItems:2.8.35-GTNH:dev')
+	// runtimeOnlyNonPublishable("curse.maven:cofh-core-69162:2388751")
+	compileOnly("curse.maven:minefactory-reloaded-66672:2277486-sources-2277487")
+	compileOnly(rfg.deobf("curse.maven:et-futurum-requiem-441392:5873837"))
 	compileOnly("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev") {transitive = false }
 }

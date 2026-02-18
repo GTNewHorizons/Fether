@@ -3,6 +3,7 @@ package glowredman.nood;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -19,7 +20,9 @@ public class NoodRecipes {
     }
 
     private static void addShapelessRecipes() {
-        GameRegistry.addShapelessRecipe(new ItemStack(NoodBlocks.blockNetherPlanks, 4), NoodBlocks.blockNetherLog);
+        GameRegistry.addShapelessRecipe(
+            new ItemStack(NoodBlocks.blockNetherPlanks, 4),
+            new ItemStack(NoodBlocks.blockNetherLog, 1, OreDictionary.WILDCARD_VALUE));
 
         GameRegistry.addShapelessRecipe(
             new ItemStack(Blocks.cobblestone, 9),
@@ -128,6 +131,9 @@ public class NoodRecipes {
 
     private static void addSmeltingRecipes() {
         GameRegistry.addSmelting(Items.quartz, new ItemStack(NoodItems.itemQuartzIngot), 0.2f);
+        GameRegistry.addSmelting(NoodItems.itemWeevil, new ItemStack(NoodItems.itemCookedWeevil), 0.35f);
+        GameRegistry.addSmelting(NoodItems.itemWeevilEgg, new ItemStack(NoodItems.itemScrambledWeevilEgg), 0.35f);
+        GameRegistry.addSmelting(NoodBlocks.blockNetherLog, new ItemStack(Items.coal, 1, 1), 0.15f);
     }
 
     private static void addSeedRecipes() {

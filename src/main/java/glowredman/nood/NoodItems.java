@@ -17,6 +17,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import glowredman.nood.items.ItemFoodWithTooltip;
 import glowredman.nood.items.ItemNetherBed;
 import glowredman.nood.items.ItemNetherSeedFood;
 import glowredman.nood.items.ItemQuartzArmor;
@@ -47,6 +48,10 @@ public class NoodItems {
     public static Item itemFleshRootSeeds;
     public static Item itemMarrowBerrySeeds;
     public static Item itemGlowFlowerSeeds;
+    public static Item itemWeevil;
+    public static Item itemWeevilEgg;
+    public static Item itemCookedWeevil;
+    public static Item itemScrambledWeevilEgg;
 
     static void init() {
         createItems();
@@ -126,6 +131,25 @@ public class NoodItems {
         itemGlowFlowerSeeds = new ItemNetherSeedFood(NoodBlocks.blockGlowFlowerCrop).setCreativeTab(Nood.TAB_NOOD)
             .setTextureName(MODID + ":glow_flower_seeds")
             .setUnlocalizedName(MODID + ".glow_flower_seeds");
+        itemWeevil = new ItemFoodWithTooltip(2 * NoodConfig.foodHungerRestore, NoodConfig.foodSaturationModifier, false)
+            .setPotionEffect(Potion.hunger.id, 30, 0, 0.3F)
+            .setCreativeTab(Nood.TAB_NOOD)
+            .setTextureName(MODID + ":weevil")
+            .setUnlocalizedName(MODID + ".weevil");
+        itemWeevilEgg = new ItemFood(NoodConfig.foodHungerRestore, NoodConfig.foodSaturationModifier, false)
+            .setCreativeTab(Nood.TAB_NOOD)
+            .setTextureName(MODID + ":weevil_egg")
+            .setUnlocalizedName(MODID + ".weevil_egg");
+        itemCookedWeevil = new ItemFood(2 * NoodConfig.foodHungerRestore, NoodConfig.foodSaturationModifier, false)
+            .setCreativeTab(Nood.TAB_NOOD)
+            .setTextureName(MODID + ":cooked_weevil")
+            .setUnlocalizedName(MODID + ".cooked_weevil");
+        itemScrambledWeevilEgg = new ItemFood(
+            3 * NoodConfig.foodHungerRestore,
+            NoodConfig.foodSaturationModifier,
+            false).setCreativeTab(Nood.TAB_NOOD)
+                .setTextureName(MODID + ":scrambled_weevil_egg")
+                .setUnlocalizedName(MODID + ".scrambled_weevil_egg");
     }
 
     private static void registerItems() {
@@ -148,6 +172,10 @@ public class NoodItems {
         GameRegistry.registerItem(itemFleshRootSeeds, "flesh_root_seeds");
         GameRegistry.registerItem(itemMarrowBerrySeeds, "marrow_berry_seeds");
         GameRegistry.registerItem(itemGlowFlowerSeeds, "glow_flower_seeds");
+        GameRegistry.registerItem(itemWeevil, "weevil");
+        GameRegistry.registerItem(itemWeevilEgg, "weevil_egg");
+        GameRegistry.registerItem(itemCookedWeevil, "cooked_weevil");
+        GameRegistry.registerItem(itemScrambledWeevilEgg, "scrambled_weevil_egg");
     }
 
     private static void addODTags() {

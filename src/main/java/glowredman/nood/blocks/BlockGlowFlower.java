@@ -26,4 +26,9 @@ public class BlockGlowFlower extends BlockNetherFlower {
         return NoodConfig.glowFlowersDropSeeds ? NoodItems.itemGlowFlowerSeeds
             : Item.getItemFromBlock(NoodBlocks.blockGlowFlower);
     }
+
+    @Override
+    public String getItemIconName() {
+        return this.getTextureName();
+    }
 }
