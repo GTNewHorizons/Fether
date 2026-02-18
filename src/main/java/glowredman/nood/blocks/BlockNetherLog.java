@@ -40,9 +40,14 @@ public class BlockNetherLog extends BlockLog {
     }
 
     @Override
+    public int damageDropped(int meta) {
+        return meta & 2;
+    }
+
+    @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> list = super.getDrops(world, x, y, z, metadata, fortune);
-        if (func_150165_c(metadata) == 1) {
+        if ((metadata & 1) == 1) {
             Random rng = world.rand;
             int tries;
             if (fortune > 0) {
