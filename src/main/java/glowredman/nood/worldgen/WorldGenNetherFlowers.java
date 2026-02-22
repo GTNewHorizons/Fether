@@ -11,14 +11,20 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenNetherFlowers extends WorldGenerator {
 
     private final Block flower;
+    private final long salt;
 
     public WorldGenNetherFlowers(boolean doBlockNotify, @Nonnull Block flower) {
         super(doBlockNotify);
         this.flower = flower;
+        long hash = flower.delegate.name()
+            .hashCode();
+        this.salt = hash << 32 | hash;
     }
 
     @Override
     public boolean generate(World world, Random rng, int x, int y, int z) {
+        rng.setSeed(rng.nextLong() ^ this.salt);
+
         for (int i = 0; i < 8; i++) {
             int newX = x + rng.nextInt(15) + 1;
             int newY = y + rng.nextInt(7) - 3;
