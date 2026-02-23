@@ -3,7 +3,7 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "Nether Food. Food from the Nether. Hell yeah!",
+		"description": "Food from the Nether. Nether Food. Hell yeah!",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
 		"url": "https://github.com/GTNewHorizons/Nood",
