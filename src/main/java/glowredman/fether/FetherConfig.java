@@ -25,6 +25,7 @@ public class FetherConfig {
     public static float aiRandomness = 0.1f;
     public static int foodHungerRestore = 1;
     public static float foodSaturationModifier = 0.6f;
+    public static boolean enableQuartzItems = true;
 
     // crops
     public static boolean cropsDropSeeds = false;
@@ -99,6 +100,7 @@ public class FetherConfig {
         aiRandomness = cfg.getFloat("aiRandomness", Configuration.CATEGORY_GENERAL, aiRandomness, 0.0f, 1.0f, "(CLIENT ONLY) What percentage of responses to the same prompt in \"/fetherai text <prompt>\" should return a random response");
         foodHungerRestore = cfg.getInt("foodHungerRestore", Configuration.CATEGORY_GENERAL, foodHungerRestore, 0, 20, "How many hunger points crop drops should restore");
         foodSaturationModifier = cfg.getFloat("foodSaturationModifier", Configuration.CATEGORY_GENERAL, foodSaturationModifier, 0.0f, 10.0f, "Saturation modifer of all crop drops");
+        enableQuartzItems = cfg.getBoolean("enableQuartzItems", Configuration.CATEGORY_GENERAL, enableQuartzItems, "If Quartz Tools, Quartz Armor and the Quartz Ingot should be registered. WARNING: Changing this to false can cause problems with existing worlds!");
 
         cropsDropSeeds = cfg.getBoolean("cropsDropSeeds", CATEGORY_CROPS, cropsDropSeeds, "If crops should drop seeds instead of some of the food");
         rClickHarvestCrops = cfg.getBoolean("rClickHarvestCrops", CATEGORY_CROPS, rClickHarvestCrops, "If crops can be harvested and replaced by richt-clicking them");

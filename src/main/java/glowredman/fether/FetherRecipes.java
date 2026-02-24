@@ -46,85 +46,87 @@ public class FetherRecipes {
     }
 
     private static void addShapedRecipes() {
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzHelmet),
-            "QQQ",
-            "Q Q",
-            'Q',
-            FetherItems.itemQuartzIngot);
+        if (FetherConfig.enableQuartzItems) {
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzHelmet),
+                "QQQ",
+                "Q Q",
+                'Q',
+                FetherItems.itemQuartzIngot);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzChestplate),
-            "Q Q",
-            "QQQ",
-            "QQQ",
-            'Q',
-            FetherItems.itemQuartzIngot);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzChestplate),
+                "Q Q",
+                "QQQ",
+                "QQQ",
+                'Q',
+                FetherItems.itemQuartzIngot);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzLeggings),
-            "QQQ",
-            "Q Q",
-            "Q Q",
-            'Q',
-            FetherItems.itemQuartzIngot);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzLeggings),
+                "QQQ",
+                "Q Q",
+                "Q Q",
+                'Q',
+                FetherItems.itemQuartzIngot);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzBoots),
-            "Q Q",
-            "Q Q",
-            'Q',
-            FetherItems.itemQuartzIngot);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzBoots),
+                "Q Q",
+                "Q Q",
+                'Q',
+                FetherItems.itemQuartzIngot);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzAxe),
-            "QQ",
-            "QS",
-            " S",
-            'Q',
-            FetherItems.itemQuartzIngot,
-            'S',
-            Items.stick);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzAxe),
+                "QQ",
+                "QS",
+                " S",
+                'Q',
+                FetherItems.itemQuartzIngot,
+                'S',
+                Items.stick);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzHoe),
-            "QQ",
-            " S",
-            " S",
-            'Q',
-            FetherItems.itemQuartzIngot,
-            'S',
-            Items.stick);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzHoe),
+                "QQ",
+                " S",
+                " S",
+                'Q',
+                FetherItems.itemQuartzIngot,
+                'S',
+                Items.stick);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzPickaxe),
-            "QQQ",
-            " S ",
-            " S ",
-            'Q',
-            FetherItems.itemQuartzIngot,
-            'S',
-            Items.stick);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzPickaxe),
+                "QQQ",
+                " S ",
+                " S ",
+                'Q',
+                FetherItems.itemQuartzIngot,
+                'S',
+                Items.stick);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzShovel),
-            "Q",
-            "S",
-            "S",
-            'Q',
-            FetherItems.itemQuartzIngot,
-            'S',
-            Items.stick);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzShovel),
+                "Q",
+                "S",
+                "S",
+                'Q',
+                FetherItems.itemQuartzIngot,
+                'S',
+                Items.stick);
 
-        GameRegistry.addShapedRecipe(
-            new ItemStack(FetherItems.itemQuartzSword),
-            "Q",
-            "Q",
-            "S",
-            'Q',
-            FetherItems.itemQuartzIngot,
-            'S',
-            Items.stick);
+            GameRegistry.addShapedRecipe(
+                new ItemStack(FetherItems.itemQuartzSword),
+                "Q",
+                "Q",
+                "S",
+                'Q',
+                FetherItems.itemQuartzIngot,
+                'S',
+                Items.stick);
+        }
 
         GameRegistry.addShapedRecipe(
             new ItemStack(FetherItems.itemNetherBed),
@@ -138,7 +140,9 @@ public class FetherRecipes {
     }
 
     private static void addSmeltingRecipes() {
-        GameRegistry.addSmelting(Items.quartz, new ItemStack(FetherItems.itemQuartzIngot), 0.2f);
+        if (FetherConfig.enableQuartzItems) {
+            GameRegistry.addSmelting(Items.quartz, new ItemStack(FetherItems.itemQuartzIngot), 0.2f);
+        }
         GameRegistry.addSmelting(FetherItems.itemWeevil, new ItemStack(FetherItems.itemCookedWeevil), 0.35f);
         GameRegistry.addSmelting(FetherItems.itemWeevilEgg, new ItemStack(FetherItems.itemScrambledWeevilEgg), 0.35f);
         GameRegistry.addSmelting(FetherBlocks.blockNetherLog, new ItemStack(Items.coal, 1, 1), 0.15f);

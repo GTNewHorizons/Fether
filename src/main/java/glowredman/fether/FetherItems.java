@@ -64,45 +64,47 @@ public class FetherItems {
         FetherBlocks.blockGlowFlowerCrop
             .setItems(Item.getItemFromBlock(FetherBlocks.blockGlowFlower), itemGlowFlowerSeeds);
 
-        if (FetherConfig.isArmorRepairable) {
+        if (FetherConfig.isArmorRepairable && FetherConfig.enableQuartzItems) {
             ARMOR_MATERIAL_QUARTZ.customCraftingMaterial = itemQuartzIngot;
         }
-        if (FetherConfig.areToolsRepairable) {
+        if (FetherConfig.areToolsRepairable && FetherConfig.enableQuartzItems) {
             TOOL_MATERIAL_QUARTZ.setRepairItem(new ItemStack(itemQuartzIngot));
         }
     }
 
     private static void createItems() {
-        itemQuartzIngot = new Item().setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_ingot")
-            .setUnlocalizedName(MODID + ".quartz_ingot");
-        itemQuartzHelmet = new ItemQuartzArmor(0).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_helmet")
-            .setUnlocalizedName(MODID + ".quartz_helmet");
-        itemQuartzChestplate = new ItemQuartzArmor(1).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_chestplate")
-            .setUnlocalizedName(MODID + ".quartz_chestplate");
-        itemQuartzLeggings = new ItemQuartzArmor(2).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_leggings")
-            .setUnlocalizedName(MODID + ".quartz_leggings");
-        itemQuartzBoots = new ItemQuartzArmor(3).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_boots")
-            .setUnlocalizedName(MODID + ".quartz_boots");
-        itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_axe")
-            .setUnlocalizedName(MODID + ".quartz_axe");
-        itemQuartzHoe = new ItemHoe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_hoe")
-            .setUnlocalizedName(MODID + ".quartz_hoe");
-        itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_pickaxe")
-            .setUnlocalizedName(MODID + ".quartz_pickaxe");
-        itemQuartzShovel = new ItemSpade(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_shovel")
-            .setUnlocalizedName(MODID + ".quartz_shovel");
-        itemQuartzSword = new ItemSword(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
-            .setTextureName(MODID + ":quartz_sword")
-            .setUnlocalizedName(MODID + ".quartz_sword");
+        if (FetherConfig.enableQuartzItems) {
+            itemQuartzIngot = new Item().setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_ingot")
+                .setUnlocalizedName(MODID + ".quartz_ingot");
+            itemQuartzHelmet = new ItemQuartzArmor(0).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_helmet")
+                .setUnlocalizedName(MODID + ".quartz_helmet");
+            itemQuartzChestplate = new ItemQuartzArmor(1).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_chestplate")
+                .setUnlocalizedName(MODID + ".quartz_chestplate");
+            itemQuartzLeggings = new ItemQuartzArmor(2).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_leggings")
+                .setUnlocalizedName(MODID + ".quartz_leggings");
+            itemQuartzBoots = new ItemQuartzArmor(3).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_boots")
+                .setUnlocalizedName(MODID + ".quartz_boots");
+            itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_axe")
+                .setUnlocalizedName(MODID + ".quartz_axe");
+            itemQuartzHoe = new ItemHoe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_hoe")
+                .setUnlocalizedName(MODID + ".quartz_hoe");
+            itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_pickaxe")
+                .setUnlocalizedName(MODID + ".quartz_pickaxe");
+            itemQuartzShovel = new ItemSpade(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_shovel")
+                .setUnlocalizedName(MODID + ".quartz_shovel");
+            itemQuartzSword = new ItemSword(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+                .setTextureName(MODID + ":quartz_sword")
+                .setUnlocalizedName(MODID + ".quartz_sword");
+        }
         itemIgnisFruit = new ItemFood(FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
             .setPotionEffect(Potion.fireResistance.id, 5, 0, 0.9f)
             .setCreativeTab(Fether.TAB_NOOD)
@@ -156,16 +158,18 @@ public class FetherItems {
     }
 
     private static void registerItems() {
-        GameRegistry.registerItem(itemQuartzIngot, "quartz_ingot");
-        GameRegistry.registerItem(itemQuartzHelmet, "quartz_helmet");
-        GameRegistry.registerItem(itemQuartzChestplate, "quartz_chestplate");
-        GameRegistry.registerItem(itemQuartzLeggings, "quartz_leggings");
-        GameRegistry.registerItem(itemQuartzBoots, "quartz_boots");
-        GameRegistry.registerItem(itemQuartzAxe, "quartz_axe");
-        GameRegistry.registerItem(itemQuartzHoe, "quartz_hoe");
-        GameRegistry.registerItem(itemQuartzPickaxe, "quartz_pickaxe");
-        GameRegistry.registerItem(itemQuartzShovel, "quartz_shovel");
-        GameRegistry.registerItem(itemQuartzSword, "quartz_sword");
+        if (FetherConfig.enableQuartzItems) {
+            GameRegistry.registerItem(itemQuartzIngot, "quartz_ingot");
+            GameRegistry.registerItem(itemQuartzHelmet, "quartz_helmet");
+            GameRegistry.registerItem(itemQuartzChestplate, "quartz_chestplate");
+            GameRegistry.registerItem(itemQuartzLeggings, "quartz_leggings");
+            GameRegistry.registerItem(itemQuartzBoots, "quartz_boots");
+            GameRegistry.registerItem(itemQuartzAxe, "quartz_axe");
+            GameRegistry.registerItem(itemQuartzHoe, "quartz_hoe");
+            GameRegistry.registerItem(itemQuartzPickaxe, "quartz_pickaxe");
+            GameRegistry.registerItem(itemQuartzShovel, "quartz_shovel");
+            GameRegistry.registerItem(itemQuartzSword, "quartz_sword");
+        }
         GameRegistry.registerItem(itemIgnisFruit, "ignis_fruit");
         GameRegistry.registerItem(itemNetherBed, "nether_bed");
         GameRegistry.registerItem(itemBloodLeaf, "blood_leaf");
@@ -182,7 +186,9 @@ public class FetherItems {
     }
 
     private static void addODTags() {
-        OreDictionary.registerOre("ingotQuartz", itemQuartzIngot);
+        if (FetherConfig.enableQuartzItems) {
+            OreDictionary.registerOre("ingotQuartz", itemQuartzIngot);
+        }
         OreDictionary.registerOre("cropIgnisfruit", itemIgnisFruit);
         OreDictionary.registerOre("cropBloodleaf", itemBloodLeaf);
         OreDictionary.registerOre("cropFleshroot", itemFleshRoot);
