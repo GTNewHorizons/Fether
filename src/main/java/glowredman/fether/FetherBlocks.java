@@ -44,7 +44,7 @@ public class FetherBlocks {
         blockNetherLeaves = new BlockNetherLeaves().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_leaves")
             .setBlockTextureName(Fether.MODID + ":nether_leaves");
-        blockNetherPlanks = new Block(Material.wood) {}.setCreativeTab(Fether.TAB_NOOD)
+        blockNetherPlanks = new Block(Material.wood).setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_planks")
             .setBlockTextureName(Fether.MODID + ":nether_planks");
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)

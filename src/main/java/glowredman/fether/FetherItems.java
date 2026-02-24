@@ -89,13 +89,13 @@ public class FetherItems {
             itemQuartzBoots = new ItemQuartzArmor(3).setCreativeTab(Fether.TAB_NOOD)
                 .setTextureName(MODID + ":quartz_boots")
                 .setUnlocalizedName(MODID + ".quartz_boots");
-            itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
                 .setTextureName(MODID + ":quartz_axe")
                 .setUnlocalizedName(MODID + ".quartz_axe");
             itemQuartzHoe = new ItemHoe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
                 .setTextureName(MODID + ":quartz_hoe")
                 .setUnlocalizedName(MODID + ".quartz_hoe");
-            itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ) {}.setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
                 .setTextureName(MODID + ":quartz_pickaxe")
                 .setUnlocalizedName(MODID + ".quartz_pickaxe");
             itemQuartzShovel = new ItemSpade(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
