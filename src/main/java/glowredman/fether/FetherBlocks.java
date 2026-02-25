@@ -46,7 +46,8 @@ public class FetherBlocks {
             .setBlockTextureName(Fether.MODID + ":nether_leaves");
         blockNetherPlanks = new Block(Material.wood).setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_planks")
-            .setBlockTextureName(Fether.MODID + ":nether_planks");
+            .setBlockTextureName(Fether.MODID + ":nether_planks")
+            .setStepSound(Block.soundTypeWood);
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
