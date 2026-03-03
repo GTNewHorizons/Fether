@@ -117,6 +117,21 @@ public class Fether {
                 continue;
             }
             switch (name) {
+                // Block Items
+                case "netherLog" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLog));
+                case "netherLeaves" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLeaves));
+                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherPlanks));
+                case "netherSapling" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherSapling));
+                case "ignisFruit" -> mapping.skipItemBlock();
+                case "netherBed" -> mapping.skipItemBlock();
+                case "netherGarden" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherGarden));
+                case "bloodleafCrop" -> mapping.skipItemBlock();
+                case "fleshrootCrop" -> mapping.skipItemBlock();
+                case "marrowberryCrop" -> mapping.skipItemBlock();
+                case "glowFlower" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockGlowFlower));
+                case "glowflowerCrop" -> mapping.skipItemBlock();
+
+                // regular Items
                 case "quartzingotItem" -> mapping.remap(FetherItems.itemQuartzIngot);
                 case "quartzhelmItem" -> mapping.remap(FetherItems.itemQuartzHelmet);
                 case "quartzchestItem" -> mapping.remap(FetherItems.itemQuartzChestplate);
