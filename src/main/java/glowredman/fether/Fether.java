@@ -130,7 +130,7 @@ public class Fether {
                 case "marrowberryCrop" -> mapping.skipItemBlock();
                 case "glowFlower" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockGlowFlower));
                 case "glowflowerCrop" -> mapping.skipItemBlock();
-                
+
                 // regular Items
                 case "quartzingotItem" -> mapping.remap(FetherItems.itemQuartzIngot);
                 case "quartzhelmItem" -> mapping.remap(FetherItems.itemQuartzHelmet);
