@@ -53,6 +53,7 @@ public class BlockNetherFlower extends BlockFlower {
         if (!worldIn.isRemote) {
             this.dropBlockAsItem(worldIn, x, y, z, new ItemStack(this));
             worldIn.setBlockToAir(x, y, z);
+            return true;
         }
         return false;
     }
