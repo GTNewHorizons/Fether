@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
+import glowredman.fether.compat.EnderIOCompat;
 import glowredman.fether.compat.MFRCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
@@ -61,6 +62,9 @@ public class Fether {
         }
         if (Loader.isModLoaded("etfuturum")) {
             EFRCompat.init();
+        }
+        if (Loader.isModLoaded("EnderIO")) {
+            EnderIOCompat.init();
         }
     }
 
