@@ -47,7 +47,7 @@ public class BlockNetherCrops extends BlockCrops {
     @Override
     public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX,
         float subY, float subZ) {
-        if (worldIn.getBlockMetadata(x, y, z) == 2) {
+        if (worldIn.getBlockMetadata(x, y, z) == 7) {
             if (worldIn.isRemote) {
                 if (FetherConfig.rClickMatureCropsShowHearts) {
                     worldIn.spawnParticle("heart", x + subX, y + subY, z + subZ, 0.0, 0.0, 0.0);
