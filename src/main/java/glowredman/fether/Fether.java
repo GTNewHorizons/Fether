@@ -20,6 +20,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
 import glowredman.fether.compat.EnderIOCompat;
+import glowredman.fether.compat.ForestryCompat;
 import glowredman.fether.compat.MFRCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
@@ -50,6 +51,9 @@ public class Fether {
             FetherAI.init();
             ClientCommandHandler.instance.registerCommand(new CommandFetherAI());
         }
+        if (Loader.isModLoaded("Forestry")) {
+            ForestryCompat.preInit();
+        }
     }
 
     @EventHandler
@@ -65,6 +69,9 @@ public class Fether {
         }
         if (Loader.isModLoaded("EnderIO")) {
             EnderIOCompat.init();
+        }
+        if (Loader.isModLoaded("Forestry")) {
+            ForestryCompat.init();
         }
     }
 
