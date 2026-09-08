@@ -33,7 +33,7 @@ public class Fether {
     public static final String MODID = "fether";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public static final CreativeTabs TAB_NOOD = new CreativeTabs(MODID) {
+    public static final CreativeTabs TAB_FETHER = new CreativeTabs(MODID) {
 
         @Override
         public Item getTabIconItem() {

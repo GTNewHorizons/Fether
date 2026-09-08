@@ -38,44 +38,44 @@ public class FetherBlocks {
     }
 
     private static void createBlocks() {
-        blockNetherLog = new BlockNetherLog().setCreativeTab(Fether.TAB_NOOD)
+        blockNetherLog = new BlockNetherLog().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_log")
             .setBlockTextureName(Fether.MODID + ":nether_log");
-        blockNetherLeaves = new BlockNetherLeaves().setCreativeTab(Fether.TAB_NOOD)
+        blockNetherLeaves = new BlockNetherLeaves().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_leaves")
             .setBlockTextureName(Fether.MODID + ":nether_leaves");
-        blockNetherPlanks = new Block(Material.wood).setCreativeTab(Fether.TAB_NOOD)
+        blockNetherPlanks = new Block(Material.wood).setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_planks")
             .setBlockTextureName(Fether.MODID + ":nether_planks")
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
-        blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
+        blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
             .setStepSound(Block.soundTypeGrass);
         blockNetherBed = new BlockNetherBed().setHardness(0.2f)
             .setBlockName(Fether.MODID + ".nether_bed")
             .setBlockTextureName(Fether.MODID + ":nether_bed");
-        blockNetherGarden = new BlockNetherGarden().setCreativeTab(Fether.TAB_NOOD)
+        blockNetherGarden = new BlockNetherGarden().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_garden")
             .setBlockTextureName(Fether.MODID + ":nether_garden");
         blockIgnisFruit = new BlockIgnisFruit().setBlockName(Fether.MODID + ".ignis_fruit")
             .setBlockTextureName(Fether.MODID + ":ignis_fruit");
         blockGlowFlower = new BlockGlowFlower().setLightLevel(1.0f)
-            .setCreativeTab(Fether.TAB_NOOD)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".glow_flower")
             .setBlockTextureName(Fether.MODID + ":glow_flower");
-        blockBloodLeafCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_NOOD)
+        blockBloodLeafCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".blood_leaf_crop")
             .setBlockTextureName(Fether.MODID + ":blood_leaf_crop");
-        blockFleshRootCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_NOOD)
+        blockFleshRootCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".flesh_root_crop")
             .setBlockTextureName(Fether.MODID + ":flesh_root_crop");
-        blockMarrowBerryCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_NOOD)
+        blockMarrowBerryCrop = (BlockNetherCrops) new BlockNetherCrops().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".marrow_berry_crop")
             .setBlockTextureName(Fether.MODID + ":marrow_berry_crop");
         blockGlowFlowerCrop = (BlockNetherCrops) new BlockNetherCrops().setLightLevel(1.0f)
-            .setCreativeTab(Fether.TAB_NOOD)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".glow_flower_crop")
             .setBlockTextureName(Fether.MODID + ":glow_flower_crop");
     }
