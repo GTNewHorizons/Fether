@@ -129,7 +129,8 @@ public class FetherItems {
         itemFleshRootSeeds = new ItemNetherSeedFood(FetherBlocks.blockFleshRootCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":flesh_root_seeds")
             .setUnlocalizedName(MODID + ".flesh_root_seeds");
-        itemMarrowBerrySeeds = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop).setCreativeTab(Fether.TAB_FETHER)
+        itemMarrowBerrySeeds = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":marrow_berry_seeds")
             .setUnlocalizedName(MODID + ".marrow_berry_seeds");
         itemGlowFlowerSeeds = new ItemNetherSeedFood(FetherBlocks.blockGlowFlowerCrop).setCreativeTab(Fether.TAB_FETHER)
