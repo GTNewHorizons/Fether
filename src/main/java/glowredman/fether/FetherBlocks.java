@@ -2,6 +2,8 @@ package glowredman.fether;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
+import net.minecraft.block.BlockPressurePlate;
+import net.minecraft.block.BlockPressurePlate.Sensitivity;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
@@ -32,6 +34,7 @@ public class FetherBlocks {
     public static Block blockNetherWoodStairs;
     public static Block blockNetherWoodFence;
     public static Block blockNetherWoodFenceGate;
+    public static Block blockNetherWoodPressurePlate;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockNetherGarden;
@@ -66,7 +69,7 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_wood_slab")
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
-        blockNetherWoodStairs = new BlockStairs(blockNetherWoodPlanks, 0) {}.setCreativeTab(Fether.TAB_NOOD)
+        blockNetherWoodStairs = new BlockStairs(blockNetherWoodPlanks, 0).setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_stairs");
         blockNetherWoodFence = new BlockFence(Fether.MODID + ":nether_planks", Material.wood)
             .setCreativeTab(Fether.TAB_NOOD)
@@ -77,6 +80,13 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_wood_fence_gate")
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
+        blockNetherWoodPressurePlate = new BlockPressurePlate(
+            Fether.MODID + ":nether_planks",
+            Material.wood,
+            Sensitivity.everything).setCreativeTab(Fether.TAB_NOOD)
+                .setBlockName(Fether.MODID + ".nether_wood_pressure_plate")
+                .setStepSound(Block.soundTypeWood)
+                .setHardness(0.5f);
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
@@ -115,20 +125,21 @@ public class FetherBlocks {
         GameRegistry.registerBlock(
             blockDoubleNetherWoodSlab,
             ItemBlockNetherSlab.class,
-            "double_nether_slab",
+            "double_nether_wood_slab",
             blockNetherWoodSlab,
             blockDoubleNetherWoodSlab,
             true);
         GameRegistry.registerBlock(
             blockNetherWoodSlab,
             ItemBlockNetherSlab.class,
-            "nether_slab",
+            "nether_wood_slab",
             blockNetherWoodSlab,
             blockDoubleNetherWoodSlab,
             false);
-        GameRegistry.registerBlock(blockNetherWoodStairs, "nether_stairs");
+        GameRegistry.registerBlock(blockNetherWoodStairs, "nether_wood_stairs");
         GameRegistry.registerBlock(blockNetherWoodFence, "nether_wood_fence");
         GameRegistry.registerBlock(blockNetherWoodFenceGate, "nether_wood_fence_gate");
+        GameRegistry.registerBlock(blockNetherWoodPressurePlate, "nether_wood_pressure_plate");
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");

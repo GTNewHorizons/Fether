@@ -36,6 +36,7 @@ tile.fether.nether_wood_slab.normal.name=Nether Wood Slab
 tile.fether.nether_wood_stairs.name=Nether Wood Stairs
 tile.fether.nether_wood_fence.name=Nether Wood Fence
 tile.fether.nether_wood_fence_gate.name=Nether Wood Fence Gate
+tile.fether.nether_wood_pressure_plate.name=Nether Wood Pressure Plate
 tile.fether.nether_sapling.name=Nether Sapling
 tile.fether.nether_bed.name=Nether Bed
 tile.fether.nether_garden.name=Nether Garden
