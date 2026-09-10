@@ -1,9 +1,9 @@
-package glowredman.fether.items.blocks;
+package glowredman.fether.items.blocks.wood;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemMultiTexture;
 
-import glowredman.fether.blocks.BlockNetherLog;
+import glowredman.fether.blocks.wood.BlockNetherLog;
 
 public class ItemBlockNetherLog extends ItemMultiTexture {
 

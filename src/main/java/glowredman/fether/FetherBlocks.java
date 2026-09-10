@@ -3,6 +3,7 @@ package glowredman.fether;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -12,15 +13,19 @@ import glowredman.fether.blocks.BlockNetherBed;
 import glowredman.fether.blocks.BlockNetherCrops;
 import glowredman.fether.blocks.BlockNetherGarden;
 import glowredman.fether.blocks.BlockNetherLeaves;
-import glowredman.fether.blocks.BlockNetherLog;
 import glowredman.fether.blocks.BlockNetherSapling;
-import glowredman.fether.items.blocks.ItemBlockNetherLog;
+import glowredman.fether.blocks.wood.BlockNetherLog;
+import glowredman.fether.blocks.wood.BlockNetherWoodSlab;
+import glowredman.fether.items.blocks.wood.ItemBlockNetherLog;
+import glowredman.fether.items.blocks.wood.ItemBlockNetherSlab;
 
 public class FetherBlocks {
 
     public static Block blockNetherLog;
     public static Block blockNetherLeaves;
     public static Block blockNetherPlanks;
+    public static Block blockDoubleNetherSlab;
+    public static Block blockNetherSlab;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockNetherGarden;
@@ -48,6 +53,13 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_planks")
             .setBlockTextureName(Fether.MODID + ":nether_planks")
             .setStepSound(Block.soundTypeWood);
+        blockDoubleNetherSlab = new BlockNetherWoodSlab(true).setBlockName(Fether.MODID + ".nether_slab")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(2.0f);
+        blockNetherSlab = new BlockNetherWoodSlab(false).setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".nether_slab")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(2.0f);
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
@@ -83,6 +95,20 @@ public class FetherBlocks {
         GameRegistry.registerBlock(blockNetherLog, ItemBlockNetherLog.class, "nether_log");
         GameRegistry.registerBlock(blockNetherLeaves, "nether_leaves");
         GameRegistry.registerBlock(blockNetherPlanks, "nether_planks");
+        GameRegistry.registerBlock(
+            blockDoubleNetherSlab,
+            ItemBlockNetherSlab.class,
+            "double_nether_slab",
+            blockNetherSlab,
+            blockDoubleNetherSlab,
+            true);
+        GameRegistry.registerBlock(
+            blockNetherSlab,
+            ItemBlockNetherSlab.class,
+            "nether_slab",
+            blockNetherSlab,
+            blockDoubleNetherSlab,
+            false);
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");
@@ -95,9 +121,10 @@ public class FetherBlocks {
     }
 
     private static void addODTags() {
-        OreDictionary.registerOre("treeWood", blockNetherLog);
+        OreDictionary.registerOre("treeWood", new ItemStack(blockNetherLog, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("treeLeaves", blockNetherLeaves);
         OreDictionary.registerOre("plankWood", blockNetherPlanks);
+        OreDictionary.registerOre("slabWood", new ItemStack(blockNetherSlab, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("treeSapling", blockNetherSapling);
     }
 }

@@ -1,4 +1,4 @@
-package glowredman.fether.blocks;
+package glowredman.fether.blocks.wood;
 
 import java.util.ArrayList;
 import java.util.List;
