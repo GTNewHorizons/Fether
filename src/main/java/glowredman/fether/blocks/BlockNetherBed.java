@@ -85,7 +85,7 @@ public class BlockNetherBed extends BlockBed {
     @Override
     public IIcon getIcon(int side, int meta) {
         if (side == 0) {
-            return FetherBlocks.blockNetherPlanks.getBlockTextureFromSide(side);
+            return FetherBlocks.blockNetherWoodPlanks.getBlockTextureFromSide(side);
         }
         return super.getIcon(side, meta);
     }

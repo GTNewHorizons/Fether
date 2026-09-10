@@ -99,7 +99,7 @@ public class Fether {
                 switch (name) {
                     case "netherLog" -> mapping.remap(FetherBlocks.blockNetherLog);
                     case "netherLeaves" -> mapping.remap(FetherBlocks.blockNetherLeaves);
-                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherPlanks);
+                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherWoodPlanks);
                     case "netherSapling" -> mapping.remap(FetherBlocks.blockNetherSapling);
                     case "ignisFruit" -> mapping.remap(FetherBlocks.blockIgnisFruit);
                     case "netherBed" -> mapping.remap(FetherBlocks.blockNetherBed);
@@ -120,7 +120,7 @@ public class Fether {
                 // Block Items
                 case "netherLog" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLog));
                 case "netherLeaves" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLeaves));
-                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherPlanks));
+                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherWoodPlanks));
                 case "netherSapling" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherSapling));
                 case "ignisFruit" -> mapping.skipItemBlock();
                 case "netherBed" -> mapping.skipItemBlock();

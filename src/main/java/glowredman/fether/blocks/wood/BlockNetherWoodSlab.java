@@ -21,17 +21,17 @@ public class BlockNetherWoodSlab extends BlockWoodSlab {
 
     @Override
     public IIcon getIcon(int side, int meta) {
-        return FetherBlocks.blockNetherPlanks.getIcon(side, meta & 7);
+        return FetherBlocks.blockNetherWoodPlanks.getIcon(side, meta & 7);
     }
 
     @Override
     public Item getItemDropped(int meta, Random random, int fortune) {
-        return Item.getItemFromBlock(FetherBlocks.blockNetherSlab);
+        return Item.getItemFromBlock(FetherBlocks.blockNetherWoodSlab);
     }
 
     @Override
     protected ItemStack createStackedBlock(int meta) {
-        return new ItemStack(FetherBlocks.blockNetherSlab, 2, meta & 7);
+        return new ItemStack(FetherBlocks.blockNetherWoodSlab, 2, meta & 7);
     }
 
     @Override

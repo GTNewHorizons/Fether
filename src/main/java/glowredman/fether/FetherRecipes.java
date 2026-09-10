@@ -21,7 +21,7 @@ public class FetherRecipes {
 
     private static void addShapelessRecipes() {
         GameRegistry.addShapelessRecipe(
-            new ItemStack(FetherBlocks.blockNetherPlanks, 4),
+            new ItemStack(FetherBlocks.blockNetherWoodPlanks, 4),
             new ItemStack(FetherBlocks.blockNetherLog, 1, OreDictionary.WILDCARD_VALUE));
 
         GameRegistry.addShapelessRecipe(
@@ -136,7 +136,7 @@ public class FetherRecipes {
             'B',
             FetherItems.itemBloodLeaf,
             'P',
-            FetherBlocks.blockNetherPlanks);
+            FetherBlocks.blockNetherWoodPlanks);
     }
 
     private static void addSmeltingRecipes() {
