@@ -33,6 +33,7 @@ tile.fether.nether_log.infested_stripped.name=Stripped Infested Nether Wood
 tile.fether.nether_leaves.name=Nether Leaves
 tile.fether.nether_planks.name=Nether Wood Planks
 tile.fether.nether_slab.normal.name=Nether Wood Slab
+tile.fether.nether_stairs.name=Nether Wood Stairs
 tile.fether.nether_sapling.name=Nether Sapling
 tile.fether.nether_bed.name=Nether Bed
 tile.fether.nether_garden.name=Nether Garden

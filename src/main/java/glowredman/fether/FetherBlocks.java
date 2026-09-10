@@ -2,6 +2,7 @@ package glowredman.fether;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -26,6 +27,7 @@ public class FetherBlocks {
     public static Block blockNetherPlanks;
     public static Block blockDoubleNetherSlab;
     public static Block blockNetherSlab;
+    public static Block blockNetherWoodStairs;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockNetherGarden;
@@ -60,6 +62,8 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_slab")
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
+        blockNetherWoodStairs = new BlockStairs(blockNetherPlanks, 0) {}.setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".nether_stairs");
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
@@ -109,6 +113,7 @@ public class FetherBlocks {
             blockNetherSlab,
             blockDoubleNetherSlab,
             false);
+        GameRegistry.registerBlock(blockNetherWoodStairs, "nether_stairs");
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");
