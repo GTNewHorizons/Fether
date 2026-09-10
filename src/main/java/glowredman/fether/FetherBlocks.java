@@ -19,6 +19,7 @@ import glowredman.fether.blocks.BlockNetherGarden;
 import glowredman.fether.blocks.BlockNetherLeaves;
 import glowredman.fether.blocks.BlockNetherSapling;
 import glowredman.fether.blocks.wood.BlockNetherLog;
+import glowredman.fether.blocks.wood.BlockNetherWoodButton;
 import glowredman.fether.blocks.wood.BlockNetherWoodFenceGate;
 import glowredman.fether.blocks.wood.BlockNetherWoodSlab;
 import glowredman.fether.items.blocks.wood.ItemBlockNetherLog;
@@ -35,6 +36,7 @@ public class FetherBlocks {
     public static Block blockNetherWoodFence;
     public static Block blockNetherWoodFenceGate;
     public static Block blockNetherWoodPressurePlate;
+    public static Block blockNetherWoodButton;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockNetherGarden;
@@ -87,6 +89,10 @@ public class FetherBlocks {
                 .setBlockName(Fether.MODID + ".nether_wood_pressure_plate")
                 .setStepSound(Block.soundTypeWood)
                 .setHardness(0.5f);
+        blockNetherWoodButton = new BlockNetherWoodButton().setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".nether_wood_button")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(0.5f);
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
@@ -140,6 +146,7 @@ public class FetherBlocks {
         GameRegistry.registerBlock(blockNetherWoodFence, "nether_wood_fence");
         GameRegistry.registerBlock(blockNetherWoodFenceGate, "nether_wood_fence_gate");
         GameRegistry.registerBlock(blockNetherWoodPressurePlate, "nether_wood_pressure_plate");
+        GameRegistry.registerBlock(blockNetherWoodButton, "nether_wood_button");
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");
