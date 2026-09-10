@@ -6,6 +6,7 @@ import net.minecraft.block.BlockPressurePlate;
 import net.minecraft.block.BlockPressurePlate.Sensitivity;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -37,6 +38,7 @@ public class FetherBlocks {
     public static Block blockNetherWoodFenceGate;
     public static Block blockNetherWoodPressurePlate;
     public static Block blockNetherWoodButton;
+    public static Block blockNetherWoodTrapdoor;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockNetherGarden;
@@ -86,13 +88,17 @@ public class FetherBlocks {
             Fether.MODID + ":nether_planks",
             Material.wood,
             Sensitivity.everything).setCreativeTab(Fether.TAB_NOOD)
-                .setBlockName(Fether.MODID + ".nether_wood_pressure_plate")
-                .setStepSound(Block.soundTypeWood)
-                .setHardness(0.5f);
+            .setBlockName(Fether.MODID + ".nether_wood_pressure_plate")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(0.5f);
         blockNetherWoodButton = new BlockNetherWoodButton().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_button")
             .setStepSound(Block.soundTypeWood)
             .setHardness(0.5f);
+        blockNetherWoodTrapdoor = new BlockTrapDoor(Material.wood).setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".nether_wood_trapdoor")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(3.0f);
         blockNetherSapling = (BlockSapling) new BlockNetherSapling().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
@@ -147,6 +153,7 @@ public class FetherBlocks {
         GameRegistry.registerBlock(blockNetherWoodFenceGate, "nether_wood_fence_gate");
         GameRegistry.registerBlock(blockNetherWoodPressurePlate, "nether_wood_pressure_plate");
         GameRegistry.registerBlock(blockNetherWoodButton, "nether_wood_button");
+        GameRegistry.registerBlock(blockNetherWoodTrapdoor, "nether_wood_trapdoor");
         GameRegistry.registerBlock(blockNetherSapling, "nether_sapling");
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");
