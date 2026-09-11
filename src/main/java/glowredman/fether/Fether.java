@@ -41,7 +41,7 @@ public class Fether {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        FetherConfig.init(event.getModConfigurationDirectory());
+        FetherConfig.init(event.getSuggestedConfigurationFile());
         FetherBlocks.init();
         FetherItems.init();
         if (event.getSide()
