@@ -11,8 +11,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
@@ -22,7 +24,13 @@ import glowredman.fether.worldgen.WorldGenNetherTree;
 
 public class BlockNetherSapling extends BlockSapling {
 
-    public BlockNetherSapling() {
+    public final String[] names;
+    protected IIcon[] icons;
+    private final int maxMeta;
+
+    public BlockNetherSapling(String... names) {
+        this.names = names;
+        this.maxMeta = names.length - 1;
         this.setStepSound(soundTypeGrass);
     }
 
@@ -33,7 +41,7 @@ public class BlockNetherSapling extends BlockSapling {
 
     @Override
     public IIcon getIcon(int side, int meta) {
-        return this.blockIcon;
+        return this.icons[MathHelper.clamp_int(meta & 7, 0, this.maxMeta)];
     }
 
     /**
@@ -44,27 +52,48 @@ public class BlockNetherSapling extends BlockSapling {
         if (!TerrainGen.saplingGrowTree(worldIn, random, x, y, z)) {
             return;
         }
-        int meta = worldIn.getBlockMetadata(x, y, z);
+
+        int meta = worldIn.getBlockMetadata(x, y, z) & 7;
+
+        WorldGenerator generator;
+        switch (meta) {
+            case 0 -> {
+                generator = new WorldGenNetherTree.Normal(true);
+            }
+            case 1 -> {
+                generator = new WorldGenNetherTree.Legacy(true);
+            }
+            default -> {
+                return;
+            }
+        }
+
         worldIn.setBlock(x, y, z, Blocks.air, 0, 4);
-        if (!new WorldGenNetherTree(true).generate(worldIn, random, x, y, z)) {
+        if (!generator.generate(worldIn, random, x, y, z)) {
             worldIn.setBlock(x, y, z, this, meta, 4);
         }
+
     }
 
     @Override
     public int damageDropped(int meta) {
-        return 0;
+        return MathHelper.clamp_int(meta & 7, 0, this.maxMeta);
     }
 
     @Override
     public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-        list.add(new ItemStack(itemIn));
+        for (int i = 0; i <= this.maxMeta; i++) {
+            list.add(new ItemStack(itemIn, 1, i));
+        }
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg) {
-        this.blockIcon = reg.registerIcon(this.getTextureName());
+        this.icons = new IIcon[this.maxMeta + 1];
+        for (int i = 0; i <= this.maxMeta; i++) {
+            this.icons[i] = reg.registerIcon(this.getTextureName() + "_" + this.names[i]);
+        }
     }
 
     @Override

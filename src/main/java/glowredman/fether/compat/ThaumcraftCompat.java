@@ -5,6 +5,7 @@ import javax.annotation.Nonnull;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import glowredman.fether.FetherBlocks;
 import glowredman.fether.FetherItems;
@@ -31,9 +32,10 @@ public class ThaumcraftCompat {
 
     private static void addAspects() {
         // spotless:off
-        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLog), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLeaves), new AspectList().add(Aspect.PLANT, 1).add(Aspect.FIRE, 1));
-        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherSapling), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLog, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockLegacyNetherLog, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLeaves, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.PLANT, 1).add(Aspect.FIRE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherSapling, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockGlowFlower), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherItems.itemIgnisFruit), new AspectList().add(Aspect.CROP, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherItems.itemBloodLeaf), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));

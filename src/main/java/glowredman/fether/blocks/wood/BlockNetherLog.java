@@ -1,42 +1,17 @@
 package glowredman.fether.blocks.wood;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockLog;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import glowredman.fether.FetherItems;
 
-public class BlockNetherLog extends BlockLog {
+public class BlockNetherLog extends BlockLogBase {
 
-    public static final String[] NAMES = { "normal", "infested", "normal_stripped", "infested_stripped" };
-
-    @Override
-    public void getSubBlocks(Item itemIn, CreativeTabs tab, List<ItemStack> list) {
-        for (int meta = 0; meta < NAMES.length; meta++) {
-            list.add(new ItemStack(itemIn, 1, meta));
-        }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister reg) {
-        this.field_150167_a = new IIcon[NAMES.length];
-        this.field_150166_b = new IIcon[NAMES.length];
-
-        for (int i = 0; i < NAMES.length; i++) {
-            this.field_150167_a[i] = reg.registerIcon(this.getTextureName() + "_" + NAMES[i]);
-            this.field_150166_b[i] = reg.registerIcon(this.getTextureName() + "_" + NAMES[i] + "_top");
-        }
+    public BlockNetherLog() {
+        super("normal", "infested", "normal_stripped", "infested_stripped");
     }
 
     @Override

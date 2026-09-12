@@ -16,6 +16,7 @@ import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
@@ -83,9 +84,14 @@ public class Fether {
         }
         if (FetherConfig.treeRarity > 0) {
             GameRegistry.registerWorldGenerator(
-                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree(false)),
+                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false)),
                 0);
         }
+    }
+
+    @EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {
+        FetherRecipes.modifyVanillaRecipes();
     }
 
     @EventHandler
