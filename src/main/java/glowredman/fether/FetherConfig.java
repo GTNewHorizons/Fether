@@ -1,23 +1,14 @@
 package glowredman.fether;
 
 import java.io.File;
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
 
 import net.minecraftforge.common.config.Configuration;
-
-import org.apache.commons.io.FileUtils;
-
-import cpw.mods.fml.common.Loader;
 
 public class FetherConfig {
 
     private static final String CATEGORY_CROPS = "crops";
     private static final String CATEGORY_TREES = "fruit trees";
     private static final String CATEGORY_GARDENS = "gardens";
-    @Deprecated
-    private static final String CATEGORY_MISC_RECIPES = "miscellaneous recipes";
     private static final String CATEGORY_RECIPES = "recipes";
 
     // general
@@ -51,49 +42,12 @@ public class FetherConfig {
     public static boolean isArmorRepairable = true;
     public static boolean areToolsRepairable = true;
 
-    static void init(File configDir) {
-        File fileHarvestTheNether = new File(configDir, "harvestthenether.cfg");
-        File fileFether = new File(configDir, "fether.cfg");
+    static void init(File configFile) {
+        Configuration cfg = new Configuration(configFile, Tags.VERSION);
 
-        if (Loader.isModLoaded("harvestthenether")) {
-            Fether.LOGGER.warn(
-                "Pam's Harvest the Nether is loaded! Consider removing it, its content is fully contained within Fether.");
-        } else if (fileHarvestTheNether.exists() && !fileFether.exists()) {
-            try {
-                FileUtils.moveFile(fileHarvestTheNether, fileFether);
-            } catch (IOException e) {
-                Fether.LOGGER.error("An error occured while converting Pam's Harvest the Nether's config file.", e);
-            }
-        }
-
-        Configuration cfg = new Configuration(fileFether, Tags.VERSION);
-
-        // backwards config
-        cfg.moveProperty(CATEGORY_MISC_RECIPES, "enablecroptoseedRecipe", CATEGORY_RECIPES);
-        cfg.moveProperty(CATEGORY_CROPS, "cropfoodRestore", Configuration.CATEGORY_GENERAL);
-        cfg.moveProperty(CATEGORY_CROPS, "cropsaturationRestore", Configuration.CATEGORY_GENERAL);
-        cfg.removeCategory(cfg.getCategory(CATEGORY_MISC_RECIPES));
-
-        cfg.renameProperty(Configuration.CATEGORY_GENERAL, "cropfoodRestore", "foodHungerRestore");
-        cfg.renameProperty(Configuration.CATEGORY_GENERAL, "cropsaturationRestore", "foodSaturationModifier");
-        cfg.renameProperty(CATEGORY_CROPS, "cropsdropSeeds", "cropsDropSeeds");
-        cfg.renameProperty(CATEGORY_CROPS, "rightclickharvestCrop", "rClickHarvestCrops");
-        cfg.renameProperty(CATEGORY_CROPS, "rightclickmatureshowcropHearts", "rClickMatureCropsShowHearts");
-        cfg.renameProperty(CATEGORY_TREES, "rightclickharvestFruit", "rClickHarvestFruits");
-        cfg.renameProperty(CATEGORY_TREES, "rightclickmatureshowfruitHearts", "rClickMatureFruitsShowHearts");
-        cfg.renameProperty(CATEGORY_GARDENS, "gardenspreadRate", "gardenSpreadRate");
-        cfg.renameProperty(CATEGORY_GARDENS, "gardendropAmount", "gardenDropAmount");
-        cfg.renameProperty(CATEGORY_GARDENS, "gardensdropSeeds", "gardensDropSeeds");
-        cfg.renameProperty(CATEGORY_GARDENS, "glowflowerspreadRate", "glowFlowerSpreadRate");
-        cfg.renameProperty(CATEGORY_GARDENS, "glowflowerRarity", "glowFlowerRarity");
-        cfg.renameProperty(CATEGORY_GARDENS, "glowflowersdropSeeds", "glowFlowersDropSeeds");
-        cfg.renameProperty(CATEGORY_RECIPES, "enablecroptoseedRecipe", "enableCrop2SeedRecipes");
-
-        convert(cfg, CATEGORY_TREES, "nethertreeGeneration", "treeRarity", treeRarity);
-        convert(cfg, CATEGORY_GARDENS, "enablegardenSpread", "gardenSpreadRate", gardenSpreadRate);
-        convert(cfg, CATEGORY_GARDENS, "enablenethergardenGeneration", "gardenRarity", gardenRarity);
-        convert(cfg, CATEGORY_GARDENS, "enableglowflowerSpread", "glowFlowerSpreadRate", glowFlowerSpreadRate);
-        convert(cfg, CATEGORY_GARDENS, "enablenetherglowflowerGeneration", "glowFlowerRarity", glowFlowerRarity);
+        // TODO: convert from pam's harvest the nether config (see
+        // https://github.com/GTNewHorizons/Fether/commit/68faa2ceb4e7cfeb3ad3e1fa7c879e43c31ba671
+        // for an earlier attempt
 
         // spotless:off
         enableFetherAI = cfg.getBoolean("enableFetherAI", Configuration.CATEGORY_GENERAL, enableFetherAI, "(CLIENT ONLY) If the \"/fetherai\" command should be enabled");
@@ -125,18 +79,6 @@ public class FetherConfig {
 
         if (cfg.hasChanged()) {
             cfg.save();
-        }
-    }
-
-    private static void convert(@Nonnull Configuration cfg, String category, String propertyBoolean, String propertyInt,
-        int defaultInt) {
-        if (cfg.hasKey(category, propertyBoolean)) {
-            if (cfg.getBoolean(propertyBoolean, category, false, null)) {
-                cfg.get(category, propertyInt, defaultInt)
-                    .set(0);
-            }
-            cfg.getCategory(category)
-                .remove(propertyBoolean);
         }
     }
 }

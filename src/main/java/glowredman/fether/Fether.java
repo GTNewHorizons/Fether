@@ -16,6 +16,7 @@ import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
@@ -41,7 +42,7 @@ public class Fether {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        FetherConfig.init(event.getModConfigurationDirectory());
+        FetherConfig.init(event.getSuggestedConfigurationFile());
         FetherBlocks.init();
         FetherItems.init();
         if (event.getSide()
@@ -83,9 +84,14 @@ public class Fether {
         }
         if (FetherConfig.treeRarity > 0) {
             GameRegistry.registerWorldGenerator(
-                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree(false)),
+                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false)),
                 0);
         }
+    }
+
+    @EventHandler
+    public void serverStarted(FMLServerStartedEvent event) {
+        FetherRecipes.modifyVanillaRecipes();
     }
 
     @EventHandler
@@ -99,7 +105,7 @@ public class Fether {
                 switch (name) {
                     case "netherLog" -> mapping.remap(FetherBlocks.blockNetherLog);
                     case "netherLeaves" -> mapping.remap(FetherBlocks.blockNetherLeaves);
-                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherPlanks);
+                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherWoodPlanks);
                     case "netherSapling" -> mapping.remap(FetherBlocks.blockNetherSapling);
                     case "ignisFruit" -> mapping.remap(FetherBlocks.blockIgnisFruit);
                     case "netherBed" -> mapping.remap(FetherBlocks.blockNetherBed);
@@ -120,7 +126,7 @@ public class Fether {
                 // Block Items
                 case "netherLog" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLog));
                 case "netherLeaves" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLeaves));
-                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherPlanks));
+                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherWoodPlanks));
                 case "netherSapling" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherSapling));
                 case "ignisFruit" -> mapping.skipItemBlock();
                 case "netherBed" -> mapping.skipItemBlock();
