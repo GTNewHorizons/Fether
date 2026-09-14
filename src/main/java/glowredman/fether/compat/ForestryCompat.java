@@ -52,11 +52,11 @@ public class ForestryCompat {
             Fluids.JUICE.getFluid(fruitJuiceAmountBy2));
         RecipeManagers.squeezerManager.addRecipe(
             10,
-            new ItemStack[] { new ItemStack(FetherItems.itemIgnisFruit) },
+            new ItemStack[] { new ItemStack(FetherItems.itemBloodLeaf) },
             Fluids.JUICE.getFluid(fruitJuiceAmountBy2));
         RecipeManagers.squeezerManager.addRecipe(
             10,
-            new ItemStack[] { new ItemStack(FetherItems.itemIgnisFruit) },
+            new ItemStack[] { new ItemStack(FetherItems.itemFleshRoot) },
             Fluids.JUICE.getFluid(fruitJuiceAmountBy2));
         RecipeManagers.squeezerManager.addRecipe(
             10,
