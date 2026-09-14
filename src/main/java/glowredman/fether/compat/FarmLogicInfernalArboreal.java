@@ -3,6 +3,7 @@ package glowredman.fether.compat;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 
 import forestry.api.farming.Farmables;
 import forestry.api.farming.IFarmHousing;
@@ -27,7 +28,7 @@ public class FarmLogicInfernalArboreal extends FarmLogicArboreal {
 
     @Override
     public String getName() {
-        return "Managed Infernal Arboretum";
+        return StatCollector.translateToLocal("for.logic.managedInfernalArboreal");
     }
 
     @Override
