@@ -74,86 +74,87 @@ public class FetherItems {
 
     private static void createItems() {
         if (FetherConfig.enableQuartzItems) {
-            itemQuartzIngot = new Item().setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzIngot = new Item().setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_ingot")
                 .setUnlocalizedName(MODID + ".quartz_ingot");
-            itemQuartzHelmet = new ItemQuartzArmor(0).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzHelmet = new ItemQuartzArmor(0).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_helmet")
                 .setUnlocalizedName(MODID + ".quartz_helmet");
-            itemQuartzChestplate = new ItemQuartzArmor(1).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzChestplate = new ItemQuartzArmor(1).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_chestplate")
                 .setUnlocalizedName(MODID + ".quartz_chestplate");
-            itemQuartzLeggings = new ItemQuartzArmor(2).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzLeggings = new ItemQuartzArmor(2).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_leggings")
                 .setUnlocalizedName(MODID + ".quartz_leggings");
-            itemQuartzBoots = new ItemQuartzArmor(3).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzBoots = new ItemQuartzArmor(3).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_boots")
                 .setUnlocalizedName(MODID + ".quartz_boots");
-            itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzAxe = new ItemAxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_axe")
                 .setUnlocalizedName(MODID + ".quartz_axe");
-            itemQuartzHoe = new ItemHoe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzHoe = new ItemHoe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_hoe")
                 .setUnlocalizedName(MODID + ".quartz_hoe");
-            itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzPickaxe = new ItemPickaxe(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_pickaxe")
                 .setUnlocalizedName(MODID + ".quartz_pickaxe");
-            itemQuartzShovel = new ItemSpade(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzShovel = new ItemSpade(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_shovel")
                 .setUnlocalizedName(MODID + ".quartz_shovel");
-            itemQuartzSword = new ItemSword(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_NOOD)
+            itemQuartzSword = new ItemSword(TOOL_MATERIAL_QUARTZ).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":quartz_sword")
                 .setUnlocalizedName(MODID + ".quartz_sword");
         }
         itemIgnisFruit = new ItemFood(FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
             .setPotionEffect(Potion.fireResistance.id, 5, 0, 0.9f)
-            .setCreativeTab(Fether.TAB_NOOD)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":ignis_fruit")
             .setUnlocalizedName(MODID + ".ignis_fruit");
-        itemNetherBed = new ItemNetherBed().setCreativeTab(Fether.TAB_NOOD)
+        itemNetherBed = new ItemNetherBed().setCreativeTab(Fether.TAB_FETHER)
             .setMaxStackSize(1)
             .setTextureName(MODID + ":nether_bed")
             .setUnlocalizedName(MODID + ".nether_bed");
-        itemBloodLeaf = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemBloodLeaf = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":blood_leaf")
             .setUnlocalizedName(MODID + ".blood_leaf");
-        itemFleshRoot = new ItemNetherSeedFood(FetherBlocks.blockFleshRootCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemFleshRoot = new ItemNetherSeedFood(FetherBlocks.blockFleshRootCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":flesh_root")
             .setUnlocalizedName(MODID + ".flesh_root");
-        itemMarrowBerry = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemMarrowBerry = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":marrow_berry")
             .setUnlocalizedName(MODID + ".marrow_berry");
-        itemBloodLeafSeeds = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemBloodLeafSeeds = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":blood_leaf_seeds")
             .setUnlocalizedName(MODID + ".blood_leaf_seeds");
-        itemFleshRootSeeds = new ItemNetherSeedFood(FetherBlocks.blockFleshRootCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemFleshRootSeeds = new ItemNetherSeedFood(FetherBlocks.blockFleshRootCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":flesh_root_seeds")
             .setUnlocalizedName(MODID + ".flesh_root_seeds");
-        itemMarrowBerrySeeds = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemMarrowBerrySeeds = new ItemNetherSeedFood(FetherBlocks.blockMarrowBerryCrop)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":marrow_berry_seeds")
             .setUnlocalizedName(MODID + ".marrow_berry_seeds");
-        itemGlowFlowerSeeds = new ItemNetherSeedFood(FetherBlocks.blockGlowFlowerCrop).setCreativeTab(Fether.TAB_NOOD)
+        itemGlowFlowerSeeds = new ItemNetherSeedFood(FetherBlocks.blockGlowFlowerCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":glow_flower_seeds")
             .setUnlocalizedName(MODID + ".glow_flower_seeds");
         itemWeevil = new ItemFoodWithTooltip(
             2 * FetherConfig.foodHungerRestore,
             FetherConfig.foodSaturationModifier,
             false).setPotionEffect(Potion.hunger.id, 30, 0, 0.3F)
-                .setCreativeTab(Fether.TAB_NOOD)
+                .setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":weevil")
                 .setUnlocalizedName(MODID + ".weevil");
         itemWeevilEgg = new ItemFood(FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
-            .setCreativeTab(Fether.TAB_NOOD)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":weevil_egg")
             .setUnlocalizedName(MODID + ".weevil_egg");
         itemCookedWeevil = new ItemFood(2 * FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
-            .setCreativeTab(Fether.TAB_NOOD)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":cooked_weevil")
             .setUnlocalizedName(MODID + ".cooked_weevil");
         itemScrambledWeevilEgg = new ItemFood(
             3 * FetherConfig.foodHungerRestore,
             FetherConfig.foodSaturationModifier,
-            false).setCreativeTab(Fether.TAB_NOOD)
+            false).setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":scrambled_weevil_egg")
                 .setUnlocalizedName(MODID + ".scrambled_weevil_egg");
     }
