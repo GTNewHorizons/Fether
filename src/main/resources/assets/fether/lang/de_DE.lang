@@ -22,7 +22,7 @@ item.fether.weevil_egg.name=Rüsselkäferei
 item.fether.cooked_weevil.name=Gebratener Rüsselkäfer
 item.fether.scrambled_weevil_egg.name=Rüsselkäfer-Spiegelei
 
-item.fether.weevil.desc=§oEin Unbedeutender Rüsselkäfer
+item.fether.weevil.desc=§oEin unbedeutender Rüsselkäfer
 
 tile.fether.nether_log.normal.name=Netherholz
 tile.fether.nether_log.infested.name=Infiziertes Netherholz
