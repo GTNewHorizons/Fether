@@ -47,7 +47,7 @@ for.logic.managedInfernalArboreal=Automatisches infernalisches Arboretum
 
 commands.fether.fetherai.usage=/fetherai <text <Eingabe>|mood>
 commands.fether.fetherai.failed.noprompt=Keine Frage zum Beantworten!
-commands.fether.fetherai.failed.noresponses=FetherAI ist zur Zeit nicht verfügbar
+commands.fether.fetherai.failed.noresponses=FetherAI ist zurzeit nicht verfügbar
 
 commands.fether.fetherai.response.text.prefix=FetherAI sagt: %1$s
 commands.fether.fetherai.response.text.0=Hallo!
