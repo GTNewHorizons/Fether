@@ -121,10 +121,12 @@ public class FetherItems {
             .setTextureName(MODID + ":ignis_fruit")
             .setUnlocalizedName(MODID + ".ignis_fruit");
 
-        itemNetherBed = new ItemNetherBed(FetherBlocks.blockNetherBed, FetherBlocks.blockLegacyNetherBed)
-            .setCreativeTab(Fether.TAB_NOOD)
-            .setMaxStackSize(1)
-            .setTextureName(MODID + ":nether_bed");
+        itemNetherBed = new ItemNetherBed(
+            FetherBlocks.blockNetherBed,
+            FetherBlocks.blockLegacyNetherBed,
+            FetherBlocks.blockWitchfireBed).setCreativeTab(Fether.TAB_NOOD)
+                .setMaxStackSize(1)
+                .setTextureName(MODID + ":nether_bed");
 
         itemBloodLeaf = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_NOOD)
             .setTextureName(MODID + ":blood_leaf")

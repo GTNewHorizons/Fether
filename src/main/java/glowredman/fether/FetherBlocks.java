@@ -32,25 +32,33 @@ public class FetherBlocks {
 
     public static Block blockNetherLog;
     public static Block blockLegacyNetherLog;
+    public static Block blockWitchfireLog;
     public static Block blockNetherLeaves;
     public static Block blockNetherWoodPlanks;
     public static Block blockDoubleNetherWoodSlab;
     public static Block blockNetherWoodSlab;
     public static Block blockNetherWoodStairs;
     public static Block blockLegacyNetherWoodStairs;
+    public static Block blockWitchfireWoodStairs;
     public static Block blockNetherWoodFence;
     public static Block blockLegacyNetherWoodFence;
+    public static Block blockWitchfireWoodFence;
     public static Block blockNetherWoodFenceGate;
     public static Block blockLegacyNetherWoodFenceGate;
+    public static Block blockWitchfireWoodFenceGate;
     public static Block blockNetherWoodPressurePlate;
     public static Block blockLegacyNetherWoodPressurePlate;
+    public static Block blockWitchfireWoodPressurePlate;
     public static Block blockNetherWoodButton;
     public static Block blockLegacyNetherWoodButton;
+    public static Block blockWitchfireWoodButton;
     public static Block blockNetherWoodTrapdoor;
     public static Block blockLegacyNetherWoodTrapdoor;
+    public static Block blockWitchfireWoodTrapdoor;
     public static BlockSapling blockNetherSapling;
     public static Block blockNetherBed;
     public static Block blockLegacyNetherBed;
+    public static Block blockWitchfireBed;
     public static Block blockNetherGarden;
     public static Block blockIgnisFruit;
     public static Block blockGlowFlower;
@@ -70,15 +78,21 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_log")
             .setBlockTextureName(Fether.MODID + ":nether_log");
 
-        blockLegacyNetherLog = new BlockLogBase("normal", "stripped").setCreativeTab(Fether.TAB_NOOD)
+        blockLegacyNetherLog = new BlockLogBase("normal", "stripped", "normal_special", "stripped_special")
+            .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".legacy_nether_log")
             .setBlockTextureName(Fether.MODID + ":legacy_nether_log");
 
-        blockNetherLeaves = new BlockNetherLeaves("normal", "legacy").setCreativeTab(Fether.TAB_NOOD)
+        blockWitchfireLog = new BlockLogBase("normal", "stripped", "normal_eye").setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_log")
+            .setBlockTextureName(Fether.MODID + ":witchfire_log");
+
+        blockNetherLeaves = new BlockNetherLeaves("normal", "legacy", "witchfire").withVariedAnimation("witchfire")
+            .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_leaves")
             .setBlockTextureName(Fether.MODID + ":nether_leaves");
 
-        blockNetherWoodPlanks = new BlockNetherWood("normal", "legacy").setCreativeTab(Fether.TAB_NOOD)
+        blockNetherWoodPlanks = new BlockNetherWood("normal", "legacy", "witchfire").setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_planks")
             .setBlockTextureName(Fether.MODID + ":nether_planks")
             .setStepSound(Block.soundTypeWood);
@@ -98,6 +112,9 @@ public class FetherBlocks {
         blockLegacyNetherWoodStairs = new BlockStairs(blockNetherWoodPlanks, 1).setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".legacy_nether_wood_stairs");
 
+        blockWitchfireWoodStairs = new BlockStairs(blockNetherWoodPlanks, 2).setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_wood_stairs");
+
         blockNetherWoodFence = new BlockFence(Fether.MODID + ":nether_planks_normal", Material.wood)
             .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_fence")
@@ -110,6 +127,12 @@ public class FetherBlocks {
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
 
+        blockWitchfireWoodFence = new BlockFence(Fether.MODID + ":nether_planks_witchfire", Material.wood)
+            .setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_wood_fence")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(2.0f);
+
         blockNetherWoodFenceGate = new BlockNetherWoodFenceGate(blockNetherWoodPlanks, 0)
             .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_fence_gate")
@@ -119,6 +142,12 @@ public class FetherBlocks {
         blockLegacyNetherWoodFenceGate = new BlockNetherWoodFenceGate(blockNetherWoodPlanks, 1)
             .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".legacy_nether_wood_fence_gate")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(2.0f);
+
+        blockWitchfireWoodFenceGate = new BlockNetherWoodFenceGate(blockNetherWoodPlanks, 2)
+            .setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_wood_fence_gate")
             .setStepSound(Block.soundTypeWood)
             .setHardness(2.0f);
 
@@ -138,6 +167,14 @@ public class FetherBlocks {
                 .setStepSound(Block.soundTypeWood)
                 .setHardness(0.5f);
 
+        blockWitchfireWoodPressurePlate = new BlockPressurePlate(
+            Fether.MODID + ":nether_planks_witchfire",
+            Material.wood,
+            Sensitivity.everything).setCreativeTab(Fether.TAB_NOOD)
+                .setBlockName(Fether.MODID + ".witchfire_wood_pressure_plate")
+                .setStepSound(Block.soundTypeWood)
+                .setHardness(0.5f);
+
         blockNetherWoodButton = new BlockNetherWoodButton(blockNetherWoodPlanks, 0).setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_wood_button")
             .setStepSound(Block.soundTypeWood)
@@ -146,6 +183,11 @@ public class FetherBlocks {
         blockLegacyNetherWoodButton = new BlockNetherWoodButton(blockNetherWoodPlanks, 1)
             .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".legacy_nether_wood_button")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(0.5f);
+
+        blockWitchfireWoodButton = new BlockNetherWoodButton(blockNetherWoodPlanks, 2).setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_wood_button")
             .setStepSound(Block.soundTypeWood)
             .setHardness(0.5f);
 
@@ -161,7 +203,14 @@ public class FetherBlocks {
             .setStepSound(Block.soundTypeWood)
             .setHardness(3.0f);
 
-        blockNetherSapling = (BlockSapling) new BlockNetherSapling("normal", "legacy").setCreativeTab(Fether.TAB_NOOD)
+        blockWitchfireWoodTrapdoor = new BlockTrapDoor(Material.wood).setCreativeTab(Fether.TAB_NOOD)
+            .setBlockName(Fether.MODID + ".witchfire_wood_trapdoor")
+            .setBlockTextureName(Fether.MODID + ":witchfire_wood_trapdoor")
+            .setStepSound(Block.soundTypeWood)
+            .setHardness(3.0f);
+
+        blockNetherSapling = (BlockSapling) new BlockNetherSapling("normal", "legacy", "witchfire")
+            .setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_sapling")
             .setBlockTextureName(Fether.MODID + ":nether_sapling")
             .setStepSound(Block.soundTypeGrass);
@@ -173,6 +222,10 @@ public class FetherBlocks {
         blockLegacyNetherBed = new BlockNetherBed(1).setHardness(0.2f)
             .setBlockName(Fether.MODID + ".legacy_nether_bed")
             .setBlockTextureName(Fether.MODID + ":legacy_nether_bed");
+
+        blockWitchfireBed = new BlockNetherBed(2).setHardness(0.2f)
+            .setBlockName(Fether.MODID + ".witchfire_bed")
+            .setBlockTextureName(Fether.MODID + ":witchfire_bed");
 
         blockNetherGarden = new BlockNetherGarden().setCreativeTab(Fether.TAB_NOOD)
             .setBlockName(Fether.MODID + ".nether_garden")
@@ -208,6 +261,7 @@ public class FetherBlocks {
         GameRegistry.registerBlock(blockNetherLog, ItemBlockMeta.class, "nether_log", blockNetherLog);
         GameRegistry
             .registerBlock(blockLegacyNetherLog, ItemBlockMeta.class, "legacy_nether_log", blockLegacyNetherLog);
+        GameRegistry.registerBlock(blockWitchfireLog, ItemBlockMeta.class, "witchfire_log", blockWitchfireLog);
         GameRegistry.registerBlock(blockNetherLeaves, ItemBlockMeta.class, "nether_leaves", blockNetherLeaves);
         GameRegistry.registerBlock(blockNetherWoodPlanks, ItemBlockMeta.class, "nether_planks", blockNetherWoodPlanks);
         GameRegistry.registerBlock(
@@ -226,19 +280,26 @@ public class FetherBlocks {
             false);
         GameRegistry.registerBlock(blockNetherWoodStairs, "nether_wood_stairs");
         GameRegistry.registerBlock(blockLegacyNetherWoodStairs, "legacy_nether_wood_stairs");
+        GameRegistry.registerBlock(blockWitchfireWoodStairs, "witchfire_wood_stairs");
         GameRegistry.registerBlock(blockNetherWoodFence, "nether_wood_fence");
         GameRegistry.registerBlock(blockLegacyNetherWoodFence, "legacy_nether_wood_fence");
+        GameRegistry.registerBlock(blockWitchfireWoodFence, "witchfire_wood_fence");
         GameRegistry.registerBlock(blockNetherWoodFenceGate, "nether_wood_fence_gate");
         GameRegistry.registerBlock(blockLegacyNetherWoodFenceGate, "legacy_nether_wood_fence_gate");
+        GameRegistry.registerBlock(blockWitchfireWoodFenceGate, "witchfire_wood_fence_gate");
         GameRegistry.registerBlock(blockNetherWoodPressurePlate, "nether_wood_pressure_plate");
         GameRegistry.registerBlock(blockLegacyNetherWoodPressurePlate, "legacy_nether_wood_pressure_plate");
+        GameRegistry.registerBlock(blockWitchfireWoodPressurePlate, "witchfire_wood_pressure_plate");
         GameRegistry.registerBlock(blockNetherWoodButton, "nether_wood_button");
         GameRegistry.registerBlock(blockLegacyNetherWoodButton, "legacy_nether_wood_button");
+        GameRegistry.registerBlock(blockWitchfireWoodButton, "witchfire_wood_button");
         GameRegistry.registerBlock(blockNetherWoodTrapdoor, "nether_wood_trapdoor");
         GameRegistry.registerBlock(blockLegacyNetherWoodTrapdoor, "legacy_nether_wood_trapdoor");
+        GameRegistry.registerBlock(blockWitchfireWoodTrapdoor, "witchfire_wood_trapdoor");
         GameRegistry.registerBlock(blockNetherSapling, ItemBlockMeta.class, "nether_sapling", blockNetherSapling);
         GameRegistry.registerBlock(blockNetherBed, null, "nether_bed");
         GameRegistry.registerBlock(blockLegacyNetherBed, null, "legacy_nether_bed");
+        GameRegistry.registerBlock(blockWitchfireBed, null, "witchfire_bed");
         GameRegistry.registerBlock(blockNetherGarden, "nether_garden");
         GameRegistry.registerBlock(blockIgnisFruit, null, "ignis_fruit");
         GameRegistry.registerBlock(blockGlowFlower, "glow_flower");
@@ -251,11 +312,13 @@ public class FetherBlocks {
     private static void addODTags() {
         OreDictionary.registerOre("treeWood", new ItemStack(blockNetherLog, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("treeWood", new ItemStack(blockLegacyNetherLog, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("treeWood", new ItemStack(blockWitchfireLog, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("treeLeaves", new ItemStack(blockNetherLeaves, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("plankWood", new ItemStack(blockNetherWoodPlanks, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("slabWood", new ItemStack(blockNetherWoodSlab, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("stairWood", blockNetherWoodStairs);
         OreDictionary.registerOre("stairWood", blockLegacyNetherWoodStairs);
+        OreDictionary.registerOre("stairWood", blockWitchfireWoodStairs);
         OreDictionary.registerOre("treeSapling", new ItemStack(blockNetherSapling, 1, OreDictionary.WILDCARD_VALUE));
     }
 }

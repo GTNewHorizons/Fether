@@ -25,6 +25,7 @@ public class MFRCompat {
             FetherBlocks.blockNetherLeaves,
             FetherBlocks.blockIgnisFruit);
         FactoryRegistry.sendMessage("registerHarvestable_Log", FetherBlocks.blockLegacyNetherLog.delegate.name());
+        FactoryRegistry.sendMessage("registerHarvestable_Log", FetherBlocks.blockWitchfireLog.delegate.name());
     }
 
     private static void registerCrop(Item seed, Item yield, Block crop) {

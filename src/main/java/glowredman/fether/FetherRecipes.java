@@ -39,6 +39,10 @@ public class FetherRecipes {
             new ItemStack(FetherBlocks.blockLegacyNetherLog, 1, OreDictionary.WILDCARD_VALUE));
 
         GameRegistry.addShapelessRecipe(
+            new ItemStack(FetherBlocks.blockNetherWoodPlanks, 4, 2),
+            new ItemStack(FetherBlocks.blockWitchfireLog, 1, OreDictionary.WILDCARD_VALUE));
+
+        GameRegistry.addShapelessRecipe(
             new ItemStack(Blocks.cobblestone, 9),
             Blocks.netherrack,
             Blocks.netherrack,
@@ -154,6 +158,12 @@ public class FetherRecipes {
             new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1));
 
         GameRegistry.addShapedRecipe(
+            new ItemStack(FetherBlocks.blockNetherWoodSlab, 6, 2),
+            "PPP",
+            'P',
+            new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2));
+
+        GameRegistry.addShapedRecipe(
             new ItemStack(FetherBlocks.blockNetherWoodStairs),
             "P  ",
             "PP ",
@@ -168,6 +178,14 @@ public class FetherRecipes {
             "PPP",
             'P',
             new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1));
+
+        GameRegistry.addShapedRecipe(
+            new ItemStack(FetherBlocks.blockWitchfireWoodStairs),
+            "P  ",
+            "PP ",
+            "PPP",
+            'P',
+            new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2));
 
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
@@ -186,6 +204,16 @@ public class FetherRecipes {
                 "PSP",
                 'P',
                 new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1),
+                'S',
+                "stickWood"));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(FetherBlocks.blockWitchfireWoodFence, 4),
+                "PSP",
+                "PSP",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2),
                 'S',
                 "stickWood"));
 
@@ -211,6 +239,16 @@ public class FetherRecipes {
 
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
+                new ItemStack(FetherBlocks.blockWitchfireWoodFenceGate),
+                "SPS",
+                "SPS",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2),
+                'S',
+                "stickWood"));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
                 new ItemStack(FetherBlocks.blockNetherWoodPressurePlate),
                 "PP",
                 'P',
@@ -222,6 +260,13 @@ public class FetherRecipes {
                 "PP",
                 'P',
                 new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1)));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(FetherBlocks.blockWitchfireWoodPressurePlate),
+                "PP",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2)));
 
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
@@ -239,6 +284,13 @@ public class FetherRecipes {
 
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
+                new ItemStack(FetherBlocks.blockWitchfireWoodButton),
+                "P",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2)));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
                 new ItemStack(FetherBlocks.blockNetherWoodTrapdoor),
                 "PPP",
                 "PPP",
@@ -252,6 +304,14 @@ public class FetherRecipes {
                 "PPP",
                 'P',
                 new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1)));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(FetherBlocks.blockWitchfireWoodTrapdoor),
+                "PPP",
+                "PPP",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2)));
 
         GameRegistry.addRecipe(
             new ShapedOreRecipe(
@@ -274,6 +334,17 @@ public class FetherRecipes {
                 "cropBloodleaf",
                 'P',
                 new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 1)));
+
+        GameRegistry.addRecipe(
+            new ShapedOreRecipe(
+                new ItemStack(FetherItems.itemNetherBed, 1, 2),
+                "BBB",
+                "BBB",
+                "PPP",
+                'B',
+                "cropBloodleaf",
+                'P',
+                new ItemStack(FetherBlocks.blockNetherWoodPlanks, 1, 2)));
     }
 
     private static void addSmeltingRecipes() {
