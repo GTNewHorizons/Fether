@@ -3,7 +3,6 @@ package glowredman.fether;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.client.ClientCommandHandler;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +17,6 @@ import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
@@ -99,16 +97,6 @@ public class Fether {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false)),
                 0);
-        }
-    }
-
-    @EventHandler
-    public void serverStarting(FMLServerStartingEvent event) {
-        if (Boolean.TRUE.equals(Launch.blackboard.get("fml.deobfuscatedEnvironment"))) {
-            event.registerServerCommand(
-                new CommandFetherTree(
-                    event.getServer()
-                        .getFile("fether_trees")));
         }
     }
 
