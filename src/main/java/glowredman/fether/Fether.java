@@ -22,6 +22,8 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
+import glowredman.fether.compat.EnderIOCompat;
+import glowredman.fether.compat.ForestryCompat;
 import glowredman.fether.compat.MFRCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
@@ -34,7 +36,7 @@ public class Fether {
     public static final String MODID = "fether";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
-    public static final CreativeTabs TAB_NOOD = new CreativeTabs(MODID) {
+    public static final CreativeTabs TAB_FETHER = new CreativeTabs(MODID) {
 
         @Override
         public Item getTabIconItem() {
@@ -52,6 +54,9 @@ public class Fether {
             FetherAI.init();
             ClientCommandHandler.instance.registerCommand(new CommandFetherAI());
         }
+        if (Loader.isModLoaded("Forestry")) {
+            ForestryCompat.preInit();
+        }
     }
 
     @EventHandler
@@ -64,6 +69,12 @@ public class Fether {
         }
         if (Loader.isModLoaded("etfuturum")) {
             EFRCompat.init();
+        }
+        if (Loader.isModLoaded("EnderIO")) {
+            EnderIOCompat.init();
+        }
+        if (Loader.isModLoaded("Forestry")) {
+            ForestryCompat.init();
         }
     }
 

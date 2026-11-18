@@ -21,7 +21,7 @@ item.fether.glow_flower_seeds.name=Glow Flower Seeds
 item.fether.weevil.name=Weevil
 item.fether.weevil_egg.name=Weevil Egg
 item.fether.cooked_weevil.name=Cooked Weevil
-item.fether.scrambled_weevil_egg.name=Scrambled Weevil Egg
+item.fether.scrambled_weevil_egg.name=Fried Weevil Egg
 
 item.fether.weevil.desc=§oA Lesser Weevil
 
@@ -78,6 +78,9 @@ tile.fether.marrow_berry_crop.name=Marrow Berry Crop
 tile.fether.glow_flower_crop.name=Glow Flower Crop
 
 tile.bed.notHere=You may not sleep here
+
+for.circuit.managedInfernalArboreal=Infernal Arboretum
+for.logic.managedInfernalArboreal=Managed Infernal Arboretum
 
 commands.fether.fetherai.usage=/fetherai <text <prompt>|mood>
 commands.fether.fetherai.failed.noprompt=No prompt to respond to!
@@ -195,11 +198,10 @@ commands.fether.fetherai.response.text.106=IT'S OVER 9000!!!
 commands.fether.fetherai.response.text.107=What does the fox say?
 commands.fether.fetherai.response.text.108=Here be dragons!
 commands.fether.fetherai.response.text.109=Is this thing on?
-commands.fether.fetherai.response.text.109=I can't hear you, it's so dark in here!
-commands.fether.fetherai.response.text.110=This was revealed to me in a dream.
-commands.fether.fetherai.response.text.111=I made it up.
-commands.fether.fetherai.response.text.112=Look mom, I'm on the internet!
-commands.fether.fetherai.response.text.113=Try downloading more RAM.
+commands.fether.fetherai.response.text.110=I can't hear you, it's so dark in here!
+commands.fether.fetherai.response.text.111=This was revealed to me in a dream.
+commands.fether.fetherai.response.text.112=I made it up.
+commands.fether.fetherai.response.text.113=Look mom, I'm on the internet!
 commands.fether.fetherai.response.text.114=Sorry, that's not enough.
 commands.fether.fetherai.response.text.115=Could you specify that?
 commands.fether.fetherai.response.text.116=Sorry, I don't understand.
