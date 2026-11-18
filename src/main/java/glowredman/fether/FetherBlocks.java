@@ -78,16 +78,17 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_log")
             .setBlockTextureName(Fether.MODID + ":nether_log");
 
-        blockLegacyNetherLog = new BlockLogBase("normal", "stripped", "normal_special", "stripped_special")
+        blockLegacyNetherLog = new BlockLogBase("normal", "carved", "normal_stripped", "carved_stripped")
             .setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".legacy_nether_log")
             .setBlockTextureName(Fether.MODID + ":legacy_nether_log");
 
-        blockWitchfireLog = new BlockLogBase("normal", "stripped", "normal_eye").setCreativeTab(Fether.TAB_FETHER)
+        blockWitchfireLog = new BlockLogBase("normal", "eye", "stripped").setIconVariationCount("eye", false, 4)
+            .setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".witchfire_log")
             .setBlockTextureName(Fether.MODID + ":witchfire_log");
 
-        blockNetherLeaves = new BlockNetherLeaves("normal", "legacy", "witchfire").withVariedAnimation("witchfire")
+        blockNetherLeaves = new BlockNetherLeaves("normal", "legacy", "witchfire").setIconVariationCount("witchfire", 4)
             .setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".nether_leaves")
             .setBlockTextureName(Fether.MODID + ":nether_leaves");

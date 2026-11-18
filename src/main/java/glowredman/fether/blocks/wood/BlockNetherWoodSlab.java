@@ -37,7 +37,7 @@ public class BlockNetherWoodSlab extends BlockWoodSlab {
 
     @Override
     protected ItemStack createStackedBlock(int meta) {
-        return new ItemStack(FetherBlocks.blockNetherWoodSlab, 2, meta & 7);
+        return new ItemStack(FetherBlocks.blockNetherWoodSlab, 2, meta & 0b0111);
     }
 
     /**

@@ -354,6 +354,8 @@ public class FetherRecipes {
         GameRegistry.addSmelting(FetherItems.itemWeevil, new ItemStack(FetherItems.itemCookedWeevil), 0.35f);
         GameRegistry.addSmelting(FetherItems.itemWeevilEgg, new ItemStack(FetherItems.itemScrambledWeevilEgg), 0.35f);
         GameRegistry.addSmelting(FetherBlocks.blockNetherLog, new ItemStack(Items.coal, 1, 1), 0.15f);
+        GameRegistry.addSmelting(FetherBlocks.blockLegacyNetherLog, new ItemStack(Items.coal, 1, 1), 0.15f);
+        GameRegistry.addSmelting(FetherBlocks.blockWitchfireLog, new ItemStack(Items.coal, 1, 1), 0.15f);
     }
 
     private static void addSeedRecipes() {

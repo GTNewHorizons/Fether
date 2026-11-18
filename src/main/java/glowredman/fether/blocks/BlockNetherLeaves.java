@@ -1,5 +1,6 @@
 package glowredman.fether.blocks;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -17,48 +18,43 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import glowredman.fether.AnimVariants;
 import glowredman.fether.FetherBlocks;
 
 public class BlockNetherLeaves extends BlockLeaves {
 
-    private Random rng = new Random();
     private final String[] names;
     private final int maxMeta;
-    private final boolean[] varied;
-    @SideOnly(Side.CLIENT)
-    private IIcon[][][] variants;
+    private final int[] variationCount;
+    private IIcon[][][] icons;
 
     public BlockNetherLeaves(String... names) {
         this.names = names;
         this.maxMeta = names.length - 1;
-        this.varied = new boolean[names.length];
+        this.variationCount = new int[names.length];
+        Arrays.fill(this.variationCount, 1);
     }
 
-    public BlockNetherLeaves withVariedAnimation(String name) {
+    public BlockNetherLeaves setIconVariationCount(String name, int count) {
         for (int i = 0; i < this.names.length; i++) {
             if (this.names[i].equals(name)) {
-                this.varied[i] = true;
+                this.variationCount[i] = count;
+                break;
             }
         }
         return this;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-        int meta = MathHelper.clamp_int(world.getBlockMetadata(x, y, z) & 3, 0, this.maxMeta);
-        if (this.varied[meta]) {
-            int v = AnimVariants.pick(x, y, z);
-            if (v > 0) {
-                return this.variants[this.isOpaqueCube() ? 1 : 0][meta][v];
-            }
-        }
-        return this.getIcon(side, meta);
+        int meta = MathHelper.clamp_int(world.getBlockMetadata(x, y, z) & 0b0011, 0, this.maxMeta);
+        int v = this.variationCount[meta] > 1 ? AnimVariants.pick(x, y, z, this.variationCount[meta]) : 0;
+        return this.icons[this.isOpaqueCube() ? 1 : 0][meta][v];
     }
 
     @Override
     public IIcon getIcon(int side, int meta) {
-        return this.field_150129_M[this.isOpaqueCube() ? 1 : 0][MathHelper.clamp_int(meta & 3, 0, this.maxMeta)];
+        return this.icons[this.isOpaqueCube() ? 1 : 0][MathHelper.clamp_int(meta & 3, 0, this.maxMeta)][0];
     }
 
     @Override
@@ -71,20 +67,21 @@ public class BlockNetherLeaves extends BlockLeaves {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg) {
-        this.field_150129_M = new IIcon[2][this.maxMeta + 1];
+        this.icons = new IIcon[2][this.maxMeta + 1][Arrays.stream(this.variationCount)
+            .max()
+            .getAsInt()];
+
         for (int i = 0; i <= this.maxMeta; i++) {
-            this.field_150129_M[0][i] = reg.registerIcon(this.getTextureName() + "_" + this.names[i]);
-            this.field_150129_M[1][i] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque");
-        }
-        this.variants = new IIcon[2][this.maxMeta + 1][AnimVariants.COUNT];
-        for (int i = 0; i <= this.maxMeta; i++) {
-            if (!this.varied[i]) {
+            if (this.variationCount[i] > 1) {
+                for (int v = 0; v < this.variationCount[i]; v++) {
+                    this.icons[0][i][v] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_" + v);
+                    this.icons[1][i][v] = reg
+                        .registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque_" + v);
+                }
                 continue;
             }
-            for (int v = 1; v < AnimVariants.COUNT; v++) {
-                this.variants[0][i][v] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_" + v);
-                this.variants[1][i][v] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque_" + v);
-            }
+            this.icons[0][i][0] = reg.registerIcon(this.getTextureName() + "_" + this.names[i]);
+            this.icons[1][i][0] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque");
         }
     }
 
@@ -114,7 +111,7 @@ public class BlockNetherLeaves extends BlockLeaves {
 
     @Override
     protected void func_150124_c(World world, int x, int y, int z, int meta, int chance) {
-        if ((meta & 3) == 0 && chance < 200 && world.rand.nextInt(128) == 0) {
+        if ((meta & 0b0011) == 0 && chance < 200 && world.rand.nextInt(128) == 0) {
             this.dropBlockAsItem(world, x, y, z, new ItemStack(FetherBlocks.blockNetherSapling, 1, 1));
         }
     }
