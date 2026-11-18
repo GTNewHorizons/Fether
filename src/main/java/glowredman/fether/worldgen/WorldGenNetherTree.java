@@ -52,6 +52,7 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
             this.metaLeaves = 1;
             this.blockLog = FetherBlocks.blockLegacyNetherLog;
             this.blockLogVariant = FetherBlocks.blockLegacyNetherLog;
+            this.metaLogVariant = 2;
         }
     }
 

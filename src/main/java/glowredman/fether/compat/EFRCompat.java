@@ -9,5 +9,8 @@ public class EFRCompat {
         StrippedLogRegistry.addLog(FetherBlocks.blockNetherLog, 0, FetherBlocks.blockNetherLog, 2);
         StrippedLogRegistry.addLog(FetherBlocks.blockNetherLog, 1, FetherBlocks.blockNetherLog, 3);
         StrippedLogRegistry.addLog(FetherBlocks.blockLegacyNetherLog, 0, FetherBlocks.blockLegacyNetherLog, 1);
+        StrippedLogRegistry.addLog(FetherBlocks.blockLegacyNetherLog, 2, FetherBlocks.blockLegacyNetherLog, 3);
+        StrippedLogRegistry.addLog(FetherBlocks.blockWitchfireLog, 0, FetherBlocks.blockWitchfireLog, 1);
+        StrippedLogRegistry.addLog(FetherBlocks.blockWitchfireLog, 2, FetherBlocks.blockWitchfireLog, 1);
     }
 }

@@ -34,6 +34,7 @@ public class ThaumcraftCompat {
         // spotless:off
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLog, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockLegacyNetherLog, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
+        ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockWitchfireLog, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherLeaves, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.PLANT, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockNetherSapling, 1, OreDictionary.WILDCARD_VALUE), new AspectList().add(Aspect.TREE, 1).add(Aspect.FIRE, 1));
         ThaumcraftApi.registerObjectTag(new ItemStack(FetherBlocks.blockGlowFlower), new AspectList().add(Aspect.HUNGER, 1).add(Aspect.FIRE, 1));

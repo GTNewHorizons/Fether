@@ -24,10 +24,36 @@ public class BlockNetherLeaves extends BlockLeaves {
     private Random rng = new Random();
     private final String[] names;
     private final int maxMeta;
+    private final boolean[] varied;
+    @SideOnly(Side.CLIENT)
+    private IIcon[][][] variants;
 
     public BlockNetherLeaves(String... names) {
         this.names = names;
         this.maxMeta = names.length - 1;
+        this.varied = new boolean[names.length];
+    }
+
+    public BlockNetherLeaves withVariedAnimation(String name) {
+        for (int i = 0; i < this.names.length; i++) {
+            if (this.names[i].equals(name)) {
+                this.varied[i] = true;
+            }
+        }
+        return this;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+        int meta = MathHelper.clamp_int(world.getBlockMetadata(x, y, z) & 3, 0, this.maxMeta);
+        if (this.varied[meta]) {
+            int v = AnimVariants.pick(x, y, z);
+            if (v > 0) {
+                return this.variants[this.isOpaqueCube() ? 1 : 0][meta][v];
+            }
+        }
+        return this.getIcon(side, meta);
     }
 
     @Override
@@ -49,6 +75,16 @@ public class BlockNetherLeaves extends BlockLeaves {
         for (int i = 0; i <= this.maxMeta; i++) {
             this.field_150129_M[0][i] = reg.registerIcon(this.getTextureName() + "_" + this.names[i]);
             this.field_150129_M[1][i] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque");
+        }
+        this.variants = new IIcon[2][this.maxMeta + 1][AnimVariants.COUNT];
+        for (int i = 0; i <= this.maxMeta; i++) {
+            if (!this.varied[i]) {
+                continue;
+            }
+            for (int v = 1; v < AnimVariants.COUNT; v++) {
+                this.variants[0][i][v] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_" + v);
+                this.variants[1][i][v] = reg.registerIcon(this.getTextureName() + "_" + this.names[i] + "_opaque_" + v);
+            }
         }
     }
 

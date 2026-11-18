@@ -14,7 +14,7 @@ import glowredman.fether.FetherBlocks;
 
 public class BlockNetherWoodSlab extends BlockWoodSlab {
 
-    public static final String[] VARIANTS = { "normal", "legacy" };
+    public static final String[] VARIANTS = { "normal", "legacy", "witchfire" };
 
     public BlockNetherWoodSlab(boolean isFullBlock) {
         super(isFullBlock);
