@@ -17,6 +17,12 @@ import glowredman.fether.FetherItems;
 
 public class BlockNetherBed extends BlockBed {
 
+    private final int meta;
+
+    public BlockNetherBed(int meta) {
+        this.meta = meta;
+    }
+
     @Override
     public boolean onBlockActivated(World worldIn, int x, int y, int z, EntityPlayer player, int side, float subX,
         float subY, float subZ) {
@@ -85,7 +91,7 @@ public class BlockNetherBed extends BlockBed {
     @Override
     public IIcon getIcon(int side, int meta) {
         if (side == 0) {
-            return FetherBlocks.blockNetherPlanks.getBlockTextureFromSide(side);
+            return FetherBlocks.blockNetherWoodPlanks.getIcon(side, this.meta);
         }
         return super.getIcon(side, meta);
     }
@@ -93,6 +99,11 @@ public class BlockNetherBed extends BlockBed {
     @Override
     public Item getItemDropped(int meta, Random random, int fortune) {
         return isBlockHeadOfBed(meta) ? Item.getItemById(0) : FetherItems.itemNetherBed;
+    }
+
+    @Override
+    public int damageDropped(int meta) {
+        return this.meta;
     }
 
     @Override

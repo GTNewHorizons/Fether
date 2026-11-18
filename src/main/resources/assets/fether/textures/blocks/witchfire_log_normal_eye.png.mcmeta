@@ -1,0 +1,119 @@
+{
+ "animation": {
+  "frametime": 2,
+  "frames": [
+   {
+    "index": 0,
+    "time": 300
+   },
+   {
+    "index": 1,
+    "time": 3
+   },
+   {
+    "index": 2,
+    "time": 2
+   },
+   {
+    "index": 3,
+    "time": 16
+   },
+   {
+    "index": 4,
+    "time": 14
+   },
+   {
+    "index": 3,
+    "time": 4
+   },
+   {
+    "index": 5,
+    "time": 14
+   },
+   {
+    "index": 3,
+    "time": 8
+   },
+   {
+    "index": 2,
+    "time": 1
+   },
+   {
+    "index": 1,
+    "time": 2
+   },
+   {
+    "index": 2,
+    "time": 1
+   },
+   {
+    "index": 3,
+    "time": 12
+   },
+   {
+    "index": 2,
+    "time": 2
+   },
+   {
+    "index": 1,
+    "time": 3
+   },
+   {
+    "index": 0,
+    "time": 300
+   },
+   {
+    "index": 6,
+    "time": 3
+   },
+   {
+    "index": 7,
+    "time": 2
+   },
+   {
+    "index": 8,
+    "time": 16
+   },
+   {
+    "index": 9,
+    "time": 14
+   },
+   {
+    "index": 8,
+    "time": 4
+   },
+   {
+    "index": 10,
+    "time": 14
+   },
+   {
+    "index": 8,
+    "time": 8
+   },
+   {
+    "index": 7,
+    "time": 1
+   },
+   {
+    "index": 6,
+    "time": 2
+   },
+   {
+    "index": 7,
+    "time": 1
+   },
+   {
+    "index": 8,
+    "time": 12
+   },
+   {
+    "index": 7,
+    "time": 2
+   },
+   {
+    "index": 6,
+    "time": 3
+   }
+  ]
+ }
+}

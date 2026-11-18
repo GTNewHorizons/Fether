@@ -105,15 +105,18 @@ public class FetherItems {
                 .setTextureName(MODID + ":quartz_sword")
                 .setUnlocalizedName(MODID + ".quartz_sword");
         }
+
         itemIgnisFruit = new ItemFood(FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
             .setPotionEffect(Potion.fireResistance.id, 5, 0, 0.9f)
             .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":ignis_fruit")
             .setUnlocalizedName(MODID + ".ignis_fruit");
-        itemNetherBed = new ItemNetherBed().setCreativeTab(Fether.TAB_FETHER)
-            .setMaxStackSize(1)
-            .setTextureName(MODID + ":nether_bed")
-            .setUnlocalizedName(MODID + ".nether_bed");
+        itemNetherBed = new ItemNetherBed(
+            FetherBlocks.blockNetherBed,
+            FetherBlocks.blockLegacyNetherBed,
+            FetherBlocks.blockWitchfireBed).setCreativeTab(Fether.TAB_FETHER)
+                .setMaxStackSize(1)
+                .setTextureName(MODID + ":nether_bed");
         itemBloodLeaf = new ItemNetherSeedFood(FetherBlocks.blockBloodLeafCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":blood_leaf")
             .setUnlocalizedName(MODID + ".blood_leaf");
@@ -136,6 +139,7 @@ public class FetherItems {
         itemGlowFlowerSeeds = new ItemNetherSeedFood(FetherBlocks.blockGlowFlowerCrop).setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":glow_flower_seeds")
             .setUnlocalizedName(MODID + ".glow_flower_seeds");
+
         itemWeevil = new ItemFoodWithTooltip(
             2 * FetherConfig.foodHungerRestore,
             FetherConfig.foodSaturationModifier,
@@ -143,14 +147,17 @@ public class FetherItems {
                 .setCreativeTab(Fether.TAB_FETHER)
                 .setTextureName(MODID + ":weevil")
                 .setUnlocalizedName(MODID + ".weevil");
+
         itemWeevilEgg = new ItemFood(FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
             .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":weevil_egg")
             .setUnlocalizedName(MODID + ".weevil_egg");
+
         itemCookedWeevil = new ItemFood(2 * FetherConfig.foodHungerRestore, FetherConfig.foodSaturationModifier, false)
             .setCreativeTab(Fether.TAB_FETHER)
             .setTextureName(MODID + ":cooked_weevil")
             .setUnlocalizedName(MODID + ".cooked_weevil");
+
         itemScrambledWeevilEgg = new ItemFood(
             3 * FetherConfig.foodHungerRestore,
             FetherConfig.foodSaturationModifier,
