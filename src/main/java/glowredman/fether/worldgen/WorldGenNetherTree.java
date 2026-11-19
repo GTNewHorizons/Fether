@@ -52,7 +52,7 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
             this.metaLeaves = 1;
             this.blockLog = FetherBlocks.blockLegacyNetherLog;
             this.blockLogVariant = FetherBlocks.blockLegacyNetherLog;
-            this.metaLogVariant = 2;
+            this.metaLogVariant = 1;
         }
     }
 
@@ -139,14 +139,25 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
             int logY = y + offsetY;
             Block block = world.getBlock(x, logY, z);
             if (block.isAir(world, x, logY, z) || block.isLeaves(world, x, logY, z) || block == this.blockFruit) {
-                if (rng.nextInt(8) == 0) {
-                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLogVariant, this.metaLogVariant);
-                } else {
-                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLog, this.metaLog);
-                }
+                this.setLog(world, rng, x, logY, z);
             }
         }
 
         return true;
+    }
+
+    protected void setLog(World world, Random rng, int x, int y, int z) {
+        if (this.blockLogVariant != null && rng.nextInt(8) == 0) {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLogVariant, this.metaLogVariant);
+        } else {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLog, this.metaLog);
+        }
+    }
+
+    protected void setLeaves(World world, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        if (block.isAir(world, x, y, z) || block.isLeaves(world, x, y, z)) {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLeaves, this.metaLeaves);
+        }
     }
 }

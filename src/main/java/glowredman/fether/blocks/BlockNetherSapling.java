@@ -21,7 +21,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import glowredman.fether.worldgen.WorldGenNetherTree;
-import glowredman.fether.worldgen.WorldGenTemplateTree;
+import glowredman.fether.worldgen.WorldGenWitchfireCypressTree;
 
 public class BlockNetherSapling extends BlockSapling {
 
@@ -65,7 +65,7 @@ public class BlockNetherSapling extends BlockSapling {
                 generator = new WorldGenNetherTree.Legacy(true);
             }
             case 2 -> {
-                generator = WorldGenTemplateTree.witchfire(true, "witchfire");
+                generator = new WorldGenWitchfireCypressTree(true);
             }
             default -> {
                 return;

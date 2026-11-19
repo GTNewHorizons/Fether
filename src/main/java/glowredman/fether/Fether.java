@@ -26,6 +26,7 @@ import glowredman.fether.compat.MFRCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
 import glowredman.fether.worldgen.WorldGenNetherTree;
+import glowredman.fether.worldgen.WorldGenWitchfireCypressTree;
 import glowredman.fether.worldgen.WorldGeneratorNether;
 
 @Mod(acceptedMinecraftVersions = "1.7.10", modid = Fether.MODID, name = "Fether", version = Tags.VERSION)
@@ -83,19 +84,27 @@ public class Fether {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     FetherConfig.gardenRarity,
-                    new WorldGenNetherFlowers(false, FetherBlocks.blockNetherGarden)),
+                    new WorldGenNetherFlowers(false, FetherBlocks.blockNetherGarden),
+                    FetherBlocks.blockNetherGarden.delegate.name()),
                 0);
         }
         if (FetherConfig.glowFlowerRarity > 0) {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     FetherConfig.glowFlowerRarity,
-                    new WorldGenNetherFlowers(false, FetherBlocks.blockGlowFlower)),
+                    new WorldGenNetherFlowers(false, FetherBlocks.blockGlowFlower),
+                    FetherBlocks.blockGlowFlower.delegate.name()),
                 0);
         }
         if (FetherConfig.treeRarity > 0) {
             GameRegistry.registerWorldGenerator(
-                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false)),
+                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false), 740742625),
+                0);
+            GameRegistry.registerWorldGenerator(
+                new WorldGeneratorNether(
+                    (FetherConfig.treeRarity + FetherConfig.treeRarity % 3) / 3,
+                    new WorldGenWitchfireCypressTree(false),
+                    224991124),
                 0);
         }
     }
