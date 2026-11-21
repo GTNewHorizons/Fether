@@ -1,0 +1,12 @@
+{
+  "dig.legacy_nether_log": {
+    "category": "block",
+    "sounds": [
+      "minecraft:block/sculk_shrieker/shriek1",
+      "minecraft:block/sculk_shrieker/shriek2",
+      "minecraft:block/sculk_shrieker/shriek3",
+      "minecraft:block/sculk_shrieker/shriek4",
+      "minecraft:block/sculk_shrieker/shriek5"
+    ]
+  }
+}

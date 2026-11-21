@@ -23,13 +23,19 @@ import glowredman.fether.compat.EFRCompat;
 import glowredman.fether.compat.EnderIOCompat;
 import glowredman.fether.compat.ForestryCompat;
 import glowredman.fether.compat.MFRCompat;
+import glowredman.fether.compat.TXLoaderCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
 import glowredman.fether.worldgen.WorldGenNetherTree;
 import glowredman.fether.worldgen.WorldGenWitchfireCypressTree;
 import glowredman.fether.worldgen.WorldGeneratorNether;
 
-@Mod(acceptedMinecraftVersions = "1.7.10", modid = Fether.MODID, name = "Fether", version = Tags.VERSION)
+@Mod(
+    acceptedMinecraftVersions = "1.7.10",
+    dependencies = "after:txloader@[1.9.0,)",
+    modid = Fether.MODID,
+    name = "Fether",
+    version = Tags.VERSION)
 public class Fether {
 
     public static final String MODID = "fether";
@@ -55,6 +61,9 @@ public class Fether {
         }
         if (Loader.isModLoaded("Forestry")) {
             ForestryCompat.preInit();
+        }
+        if (Loader.isModLoaded("txloader")) {
+            TXLoaderCompat.init();
         }
     }
 

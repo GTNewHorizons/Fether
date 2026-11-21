@@ -18,8 +18,8 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import glowredman.fether.AnimVariants;
 import glowredman.fether.FetherBlocks;
+import glowredman.fether.client.AnimVariants;
 
 public class BlockNetherLeaves extends BlockLeaves {
 

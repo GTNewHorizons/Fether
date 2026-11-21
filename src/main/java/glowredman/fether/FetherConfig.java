@@ -17,6 +17,7 @@ public class FetherConfig {
     public static int foodHungerRestore = 1;
     public static float foodSaturationModifier = 0.6f;
     public static boolean enableQuartzItems = true;
+    public static float carvedLegacyLogShriekProbability = 0.02f;
 
     // crops
     public static boolean cropsDropSeeds = false;
@@ -55,6 +56,7 @@ public class FetherConfig {
         foodHungerRestore = cfg.getInt("foodHungerRestore", Configuration.CATEGORY_GENERAL, foodHungerRestore, 0, 20, "How many hunger points crop drops should restore");
         foodSaturationModifier = cfg.getFloat("foodSaturationModifier", Configuration.CATEGORY_GENERAL, foodSaturationModifier, 0.0f, 10.0f, "Saturation modifer of all crop drops");
         enableQuartzItems = cfg.getBoolean("enableQuartzItems", Configuration.CATEGORY_GENERAL, enableQuartzItems, "If Quartz Tools, Quartz Armor and the Quartz Ingot should be registered. WARNING: Changing this to false can cause problems with existing worlds!");
+        carvedLegacyLogShriekProbability = cfg.getFloat("carvedLegacyLogShriekProbability", Configuration.CATEGORY_GENERAL, carvedLegacyLogShriekProbability, 0.0f, 1.0f, "(CLIENT ONLY | REQUIRES TX-LOADER) Sets the chance that Carved Legacy Nether Wood shrieks when breaking/placing it");
 
         cropsDropSeeds = cfg.getBoolean("cropsDropSeeds", CATEGORY_CROPS, cropsDropSeeds, "If crops should drop seeds instead of some of the food");
         rClickHarvestCrops = cfg.getBoolean("rClickHarvestCrops", CATEGORY_CROPS, rClickHarvestCrops, "If crops can be harvested and replaced by richt-clicking them");

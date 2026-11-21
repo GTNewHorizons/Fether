@@ -1,4 +1,4 @@
-package glowredman.fether;
+package glowredman.fether.client;
 
 public final class AnimVariants {
 

@@ -14,7 +14,7 @@ import net.minecraft.world.IBlockAccess;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import glowredman.fether.AnimVariants;
+import glowredman.fether.client.AnimVariants;
 
 public class BlockLogBase extends BlockLog {
 

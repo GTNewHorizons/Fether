@@ -19,6 +19,7 @@ import glowredman.fether.blocks.BlockNetherCrops;
 import glowredman.fether.blocks.BlockNetherGarden;
 import glowredman.fether.blocks.BlockNetherLeaves;
 import glowredman.fether.blocks.BlockNetherSapling;
+import glowredman.fether.blocks.wood.BlockLegacyNetherLog;
 import glowredman.fether.blocks.wood.BlockLogBase;
 import glowredman.fether.blocks.wood.BlockNetherLog;
 import glowredman.fether.blocks.wood.BlockNetherWood;
@@ -78,8 +79,7 @@ public class FetherBlocks {
             .setBlockName(Fether.MODID + ".nether_log")
             .setBlockTextureName(Fether.MODID + ":nether_log");
 
-        blockLegacyNetherLog = new BlockLogBase("normal", "carved", "normal_stripped", "carved_stripped")
-            .setCreativeTab(Fether.TAB_FETHER)
+        blockLegacyNetherLog = new BlockLegacyNetherLog().setCreativeTab(Fether.TAB_FETHER)
             .setBlockName(Fether.MODID + ".legacy_nether_log")
             .setBlockTextureName(Fether.MODID + ":legacy_nether_log");
 
