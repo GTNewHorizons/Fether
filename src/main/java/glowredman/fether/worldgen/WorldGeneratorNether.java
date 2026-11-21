@@ -23,11 +23,8 @@ public class WorldGeneratorNether implements IWorldGenerator {
         this.salt = salt;
     }
 
-    public WorldGeneratorNether(@Nonnegative int rarity, @Nonnull WorldGenerator generator, Object objForSalt) {
-        this.rarity = rarity;
-        this.generator = generator;
-        long hash = objForSalt.hashCode();
-        this.salt = hash << 32 | hash;
+    public WorldGeneratorNether(@Nonnegative int rarity, @Nonnull WorldGenerator generator, int salt) {
+        this(rarity, generator, (long) salt << 32 | salt);
     }
 
     @Override

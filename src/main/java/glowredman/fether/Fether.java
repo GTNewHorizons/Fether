@@ -80,12 +80,18 @@ public class Fether {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         FetherRecipes.init();
+
+        /*
+         * WARNING!
+         * Changing the salt values changes world-gen!
+         */
         if (FetherConfig.gardenRarity > 0) {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     FetherConfig.gardenRarity,
                     new WorldGenNetherFlowers(false, FetherBlocks.blockNetherGarden),
-                    FetherBlocks.blockNetherGarden.delegate.name()),
+                    FetherBlocks.blockNetherGarden.delegate.name()
+                        .hashCode()),
                 0);
         }
         if (FetherConfig.glowFlowerRarity > 0) {
@@ -93,18 +99,22 @@ public class Fether {
                 new WorldGeneratorNether(
                     FetherConfig.glowFlowerRarity,
                     new WorldGenNetherFlowers(false, FetherBlocks.blockGlowFlower),
-                    FetherBlocks.blockGlowFlower.delegate.name()),
+                    FetherBlocks.blockGlowFlower.delegate.name()
+                        .hashCode()),
                 0);
         }
         if (FetherConfig.treeRarity > 0) {
             GameRegistry.registerWorldGenerator(
-                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree.Normal(false), 740742625),
+                new WorldGeneratorNether(
+                    FetherConfig.treeRarity,
+                    new WorldGenNetherTree.Normal(false),
+                    "nether_tree".hashCode()),
                 0);
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     (FetherConfig.treeRarity + FetherConfig.treeRarity % 3) / 3,
                     new WorldGenWitchfireCypressTree(false),
-                    224991124),
+                    "witchfire_cypress_tree".hashCode()),
                 0);
         }
     }
