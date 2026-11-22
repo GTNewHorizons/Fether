@@ -15,15 +15,23 @@ public class WorldGeneratorNether implements IWorldGenerator {
 
     private final int rarity;
     private final WorldGenerator generator;
+    private final long salt;
 
-    public WorldGeneratorNether(@Nonnegative int rarity, @Nonnull WorldGenerator generator) {
+    public WorldGeneratorNether(@Nonnegative int rarity, @Nonnull WorldGenerator generator, long salt) {
         this.rarity = rarity;
         this.generator = generator;
+        this.salt = salt;
+    }
+
+    public WorldGeneratorNether(@Nonnegative int rarity, @Nonnull WorldGenerator generator, int salt) {
+        this(rarity, generator, (long) salt << 32 | salt);
     }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
         IChunkProvider chunkProvider) {
+        random.setSeed(random.nextLong() ^ this.salt);
+
         if (world.provider.dimensionId == -1) {
             for (int i = 0; i < this.rarity; i++) {
                 int x = (chunkX << 4) + random.nextInt(16);

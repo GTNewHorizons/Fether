@@ -7,6 +7,12 @@ import glowredman.fether.FetherBlocks;
 public class EnderIOCompat {
 
     public static void init() {
-        FarmersCommune.joinCommune(new TreeFarmer(true, FetherBlocks.blockNetherSapling, FetherBlocks.blockNetherLog));
+        FarmersCommune.joinCommune(
+            new TreeFarmer(
+                true,
+                FetherBlocks.blockNetherSapling,
+                FetherBlocks.blockNetherLog,
+                FetherBlocks.blockLegacyNetherLog,
+                FetherBlocks.blockWitchfireLog));
     }
 }

@@ -12,6 +12,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -22,12 +23,19 @@ import glowredman.fether.compat.EFRCompat;
 import glowredman.fether.compat.EnderIOCompat;
 import glowredman.fether.compat.ForestryCompat;
 import glowredman.fether.compat.MFRCompat;
+import glowredman.fether.compat.TXLoaderCompat;
 import glowredman.fether.compat.ThaumcraftCompat;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
 import glowredman.fether.worldgen.WorldGenNetherTree;
+import glowredman.fether.worldgen.WorldGenWitchfireCypressTree;
 import glowredman.fether.worldgen.WorldGeneratorNether;
 
-@Mod(acceptedMinecraftVersions = "1.7.10", modid = Fether.MODID, name = "Fether", version = Tags.VERSION)
+@Mod(
+    acceptedMinecraftVersions = "1.7.10",
+    dependencies = "after:txloader@[1.9.0,)",
+    modid = Fether.MODID,
+    name = "Fether",
+    version = Tags.VERSION)
 public class Fether {
 
     public static final String MODID = "fether";
@@ -43,13 +51,16 @@ public class Fether {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        FetherConfig.init(event.getModConfigurationDirectory());
+        FetherConfig.init(event.getSuggestedConfigurationFile());
         FetherBlocks.init();
         FetherItems.init();
         if (event.getSide()
             .isClient()) {
             FetherAI.init();
             ClientCommandHandler.instance.registerCommand(new CommandFetherAI());
+            if (Loader.isModLoaded("txloader")) {
+                TXLoaderCompat.init();
+            }
         }
         if (Loader.isModLoaded("Forestry")) {
             ForestryCompat.preInit();
@@ -78,25 +89,48 @@ public class Fether {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         FetherRecipes.init();
+
+        /*
+         * WARNING!
+         * Changing the salt values changes world-gen!
+         */
         if (FetherConfig.gardenRarity > 0) {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     FetherConfig.gardenRarity,
-                    new WorldGenNetherFlowers(false, FetherBlocks.blockNetherGarden)),
+                    new WorldGenNetherFlowers(false, FetherBlocks.blockNetherGarden),
+                    FetherBlocks.blockNetherGarden.delegate.name()
+                        .hashCode()),
                 0);
         }
         if (FetherConfig.glowFlowerRarity > 0) {
             GameRegistry.registerWorldGenerator(
                 new WorldGeneratorNether(
                     FetherConfig.glowFlowerRarity,
-                    new WorldGenNetherFlowers(false, FetherBlocks.blockGlowFlower)),
+                    new WorldGenNetherFlowers(false, FetherBlocks.blockGlowFlower),
+                    FetherBlocks.blockGlowFlower.delegate.name()
+                        .hashCode()),
                 0);
         }
         if (FetherConfig.treeRarity > 0) {
             GameRegistry.registerWorldGenerator(
-                new WorldGeneratorNether(FetherConfig.treeRarity, new WorldGenNetherTree(false)),
+                new WorldGeneratorNether(
+                    FetherConfig.treeRarity,
+                    new WorldGenNetherTree.Normal(false),
+                    "nether_tree".hashCode()),
+                0);
+            GameRegistry.registerWorldGenerator(
+                new WorldGeneratorNether(
+                    (FetherConfig.treeRarity + FetherConfig.treeRarity % 3) / 3,
+                    new WorldGenWitchfireCypressTree(false),
+                    "witchfire_cypress_tree".hashCode()),
                 0);
         }
+    }
+
+    @EventHandler
+    public void serverStarted(FMLLoadCompleteEvent event) {
+        FetherRecipes.modifyVanillaRecipes();
     }
 
     @EventHandler
@@ -110,7 +144,7 @@ public class Fether {
                 switch (name) {
                     case "netherLog" -> mapping.remap(FetherBlocks.blockNetherLog);
                     case "netherLeaves" -> mapping.remap(FetherBlocks.blockNetherLeaves);
-                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherPlanks);
+                    case "netherPlanks" -> mapping.remap(FetherBlocks.blockNetherWoodPlanks);
                     case "netherSapling" -> mapping.remap(FetherBlocks.blockNetherSapling);
                     case "ignisFruit" -> mapping.remap(FetherBlocks.blockIgnisFruit);
                     case "netherBed" -> mapping.remap(FetherBlocks.blockNetherBed);
@@ -131,7 +165,7 @@ public class Fether {
                 // Block Items
                 case "netherLog" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLog));
                 case "netherLeaves" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherLeaves));
-                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherPlanks));
+                case "netherPlanks" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherWoodPlanks));
                 case "netherSapling" -> mapping.remap(Item.getItemFromBlock(FetherBlocks.blockNetherSapling));
                 case "ignisFruit" -> mapping.skipItemBlock();
                 case "netherBed" -> mapping.skipItemBlock();

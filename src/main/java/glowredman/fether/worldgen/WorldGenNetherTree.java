@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -19,25 +20,40 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
     protected @Nonnull IPlantable sapling;
     protected @Nonnull Block blockLeaves;
     protected @Nonnegative int metaLeaves;
-    protected @Nonnull Block blockFruit;
+    protected @Nullable Block blockFruit;
     protected @Nonnegative int metaFruit;
     protected @Nonnull Block blockLog;
     protected @Nonnegative int metaLog;
     protected @Nonnull Block blockLogVariant;
     protected @Nonnegative int metaLogVariant;
 
-    public WorldGenNetherTree(boolean doBlockNotify) {
+    protected WorldGenNetherTree(boolean doBlockNotify) {
         super(doBlockNotify);
         this.minTreeHeight = 5;
         this.sapling = FetherBlocks.blockNetherSapling;
         this.blockLeaves = FetherBlocks.blockNetherLeaves;
-        this.metaLeaves = 0;
-        this.blockFruit = FetherBlocks.blockIgnisFruit;
-        this.metaFruit = 0;
-        this.blockLog = FetherBlocks.blockNetherLog;
-        this.metaLog = 0;
-        this.blockLogVariant = FetherBlocks.blockNetherLog;
-        this.metaLogVariant = 1;
+    }
+
+    public static class Normal extends WorldGenNetherTree {
+
+        public Normal(boolean doBlockNotify) {
+            super(doBlockNotify);
+            this.blockFruit = FetherBlocks.blockIgnisFruit;
+            this.blockLog = FetherBlocks.blockNetherLog;
+            this.blockLogVariant = FetherBlocks.blockNetherLog;
+            this.metaLogVariant = 1;
+        }
+    }
+
+    public static class Legacy extends WorldGenNetherTree {
+
+        public Legacy(boolean doBlockNotify) {
+            super(doBlockNotify);
+            this.metaLeaves = 1;
+            this.blockLog = FetherBlocks.blockLegacyNetherLog;
+            this.blockLogVariant = FetherBlocks.blockLegacyNetherLog;
+            this.metaLogVariant = 1;
+        }
     }
 
     @Override
@@ -101,7 +117,7 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
                                 this.blockLeaves,
                                 this.metaLeaves);
 
-                            if (world.isAirBlock(leavesX, leavesY - 1, leavesZ)
+                            if (this.blockFruit != null && world.isAirBlock(leavesX, leavesY - 1, leavesZ)
                                 && world.isAirBlock(leavesX, leavesY - 2, leavesZ)
                                 && rng.nextInt(4) == 0) {
                                 this.setBlockAndNotifyAdequately(
@@ -123,14 +139,25 @@ public class WorldGenNetherTree extends WorldGenAbstractTree {
             int logY = y + offsetY;
             Block block = world.getBlock(x, logY, z);
             if (block.isAir(world, x, logY, z) || block.isLeaves(world, x, logY, z) || block == this.blockFruit) {
-                if (rng.nextInt(8) == 0) {
-                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLogVariant, this.metaLogVariant);
-                } else {
-                    this.setBlockAndNotifyAdequately(world, x, logY, z, this.blockLog, this.metaLog);
-                }
+                this.setLog(world, rng, x, logY, z);
             }
         }
 
         return true;
+    }
+
+    protected void setLog(World world, Random rng, int x, int y, int z) {
+        if (this.blockLogVariant != null && rng.nextInt(8) == 0) {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLogVariant, this.metaLogVariant);
+        } else {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLog, this.metaLog);
+        }
+    }
+
+    protected void setLeaves(World world, int x, int y, int z) {
+        Block block = world.getBlock(x, y, z);
+        if (block.isAir(world, x, y, z) || block.isLeaves(world, x, y, z)) {
+            this.setBlockAndNotifyAdequately(world, x, y, z, this.blockLeaves, this.metaLeaves);
+        }
     }
 }
