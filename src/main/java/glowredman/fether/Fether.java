@@ -12,11 +12,11 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
 import glowredman.fether.compat.EFRCompat;
@@ -58,12 +58,12 @@ public class Fether {
             .isClient()) {
             FetherAI.init();
             ClientCommandHandler.instance.registerCommand(new CommandFetherAI());
+            if (Loader.isModLoaded("txloader")) {
+                TXLoaderCompat.init();
+            }
         }
         if (Loader.isModLoaded("Forestry")) {
             ForestryCompat.preInit();
-        }
-        if (Loader.isModLoaded("txloader")) {
-            TXLoaderCompat.init();
         }
     }
 
@@ -129,7 +129,7 @@ public class Fether {
     }
 
     @EventHandler
-    public void serverStarted(FMLServerStartedEvent event) {
+    public void serverStarted(FMLLoadCompleteEvent event) {
         FetherRecipes.modifyVanillaRecipes();
     }
 
