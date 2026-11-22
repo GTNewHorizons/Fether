@@ -1,12 +1,12 @@
 package glowredman.fether.blocks.wood;
 
-import cpw.mods.fml.common.Loader;
+import glowredman.fether.compat.FetherCompatHandler.Mods;
 
 public class BlockLegacyNetherLog extends BlockLogBase {
 
     public BlockLegacyNetherLog() {
         super("normal", "carved", "normal_stripped", "carved_stripped");
-        if (Loader.isModLoaded("txloader")) {
+        if (Mods.TX_LOADER.isLoaded()) {
             this.setStepSound(SoundTypeLegacyNetherLog.INSTANCE);
         }
     }

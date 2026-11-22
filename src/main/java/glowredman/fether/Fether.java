@@ -8,7 +8,6 @@ import net.minecraftforge.client.ClientCommandHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -19,12 +18,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.Type;
-import glowredman.fether.compat.EFRCompat;
-import glowredman.fether.compat.EnderIOCompat;
-import glowredman.fether.compat.ForestryCompat;
-import glowredman.fether.compat.MFRCompat;
-import glowredman.fether.compat.TXLoaderCompat;
-import glowredman.fether.compat.ThaumcraftCompat;
+import glowredman.fether.compat.FetherCompatHandler;
 import glowredman.fether.worldgen.WorldGenNetherFlowers;
 import glowredman.fether.worldgen.WorldGenNetherTree;
 import glowredman.fether.worldgen.WorldGenWitchfireCypressTree;
@@ -51,6 +45,7 @@ public class Fether {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        FetherCompatHandler.Mods.checkLoaded();
         FetherConfig.init(event.getSuggestedConfigurationFile());
         FetherBlocks.init();
         FetherItems.init();
@@ -58,32 +53,13 @@ public class Fether {
             .isClient()) {
             FetherAI.init();
             ClientCommandHandler.instance.registerCommand(new CommandFetherAI());
-            if (Loader.isModLoaded("txloader")) {
-                TXLoaderCompat.init();
-            }
         }
-        if (Loader.isModLoaded("Forestry")) {
-            ForestryCompat.preInit();
-        }
+        FetherCompatHandler.preInit(event.getSide());
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        if (Loader.isModLoaded("Thaumcraft")) {
-            ThaumcraftCompat.init();
-        }
-        if (Loader.isModLoaded("MineFactoryReloaded")) {
-            MFRCompat.init();
-        }
-        if (Loader.isModLoaded("etfuturum")) {
-            EFRCompat.init();
-        }
-        if (Loader.isModLoaded("EnderIO")) {
-            EnderIOCompat.init();
-        }
-        if (Loader.isModLoaded("Forestry")) {
-            ForestryCompat.init();
-        }
+        FetherCompatHandler.init(event.getSide());
     }
 
     @EventHandler
